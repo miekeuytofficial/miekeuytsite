@@ -1,0 +1,1 @@
+<template><div class="skills-view">skills view</div></template>

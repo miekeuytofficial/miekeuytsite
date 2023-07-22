@@ -1,0 +1,1 @@
+<template><div class="testimonials-view">testimonials view</div></template>
