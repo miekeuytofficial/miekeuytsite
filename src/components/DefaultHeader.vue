@@ -125,6 +125,7 @@ const isSelected = (itemName: string) => router.currentRoute.value.name === item
   }
 
   .header-items {
+      box-shadow: -2px 2px 3px -1px var(--dark-gray);
     display: flex;
   }
 
