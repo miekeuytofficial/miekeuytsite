@@ -3,7 +3,7 @@
   --white: #fffdfaff;
   --gray: #495968ff;
   --dark-gray: #3a4650;
-  --blue-gray: rgb(88 107 129);
+  --blue-gray: rgb(71, 87, 105);
   --light-blue-gray: rgb(105, 126, 151);
   --light-blue-gray-75: rgb(105, 126, 151, 0.75);
   --dark-blue-gray: rgb(42, 54, 68);
@@ -17,7 +17,7 @@
   --dark-warm-yellow: rgb(159, 118, 22);
   --warm-yellow-50: rgb(221, 164, 72, 0.5);
   --warm-yellow-75: rgb(221, 164, 72, 0.75);
-  --pikachu-yellow: hsl(49, 100%, 47%);
+  --pikachu-yellow: #f0c400;
   --pikachu-yellow-75: rgba(240, 196, 0, 0.75);
   --pikachu-yellow-50: rgba(240, 196, 0, 0.50);
   --light-gray: #99a9b7ff;
