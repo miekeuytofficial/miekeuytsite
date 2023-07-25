@@ -72,4 +72,10 @@ const textData = {
     }
   }
 }
+
+@media (max-width:800px) {
+  .about-view .page-body .profile-img {
+    margin: 1rem
+  }
+}
 </style>

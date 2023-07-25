@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
-
+window.onload = function () {
+    if (window.innerWidth < 700) {
+        alert('This site is not intended for mobile devices. Please view this site on a computer.');
+    }
+};
 type MenuItem = { path: string; name: string }
 const router = useRouter()
 
@@ -57,7 +61,7 @@ const isSelected = (itemName: string) => router.currentRoute.value.name === item
 
 <style lang="scss">
 .default-header {
-    @media (prefers-color-scheme: dark) {}
+
 
     --header-bg-base-color: var(--dark-blue-gray);
     --header-bg-color: var(--gray);
@@ -65,17 +69,14 @@ const isSelected = (itemName: string) => router.currentRoute.value.name === item
     --header-text-color: black;
 
     display: flex;
-    // align-items: center;
-    // justify-content: space-around;
     flex-wrap: nowrap;
     flex-direction: column;
     padding-inline: 1rem;
     padding: 0;
     background-color: var(--header-bg-base-color);
     color: var(--header-text-color);
-    width:100%;
+    width: 100%;
 
-    // gap:1rem;
     .header-shared {
         display: flex;
         width: 100%;
@@ -143,6 +144,7 @@ const isSelected = (itemName: string) => router.currentRoute.value.name === item
         --header-text-color: var(--warm-yellow);
         background-color: var(--header-item-bg-color);
 
+
         width: 100%;
         display: flex;
         border-radius: 2px;
@@ -199,5 +201,35 @@ const isSelected = (itemName: string) => router.currentRoute.value.name === item
             }
         }
     }
+}
+
+@media (max-width:800px) {
+    .default-header {
+        .header-shared {
+            padding-inline: 1rem;
+        }
+
+        .header-item,
+        .title {
+            letter-spacing: 0.2rem;
+        }
+
+        .header-item {
+            font-size: 12px;
+        }
+
+        .contact-group {
+            flex-direction: row;
+            gap: 1rem;
+
+            .contact-details {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+
+
+    }
+
 }
 </style>

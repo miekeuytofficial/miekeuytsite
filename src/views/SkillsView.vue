@@ -54,6 +54,7 @@ onMounted(() => {
             border-color: var(--purple);
             border-width: 1px;
             border-style: solid;
+            min-width: fit-content;
             margin-top: 1rem;
             color: var(--light-blue);
             border-radius: 20px;
