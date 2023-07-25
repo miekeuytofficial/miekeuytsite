@@ -19,7 +19,9 @@ const isLongTestimonial = () => props.quote.length > 360;
 <template>
   <div class="testimonial" :class="{ 'hidden': hideOverflow && isLongTestimonial(), 'long': isLongTestimonial() }">
     <div class="icon">
-      <img :src="imgSrc" />
+      <img v-if="imgSrc" :src="imgSrc" /> <font-awesome-icon v-else icon="fa-solid fa-circle-user" :style="{
+        'fontSize': '60px', 'color': 'var(--light-blue-gray)', 'background': 'white', 'border-radius': '100%'
+      }" />
     </div>
     <div class="quote-wrapper" @click="handleOverflowHide">
 
@@ -31,9 +33,9 @@ const isLongTestimonial = () => props.quote.length > 360;
       <div class="quoter-info">
         <a :href="quoterInfo.profileUrl">
           <div class="quoter-name-role">
-            <div class="quoter-name">{{ `${quoterInfo.name}` }}</div>
+            <div class="quoter-name">{{ `${quoterInfo.name} ` }}</div>
 
-            <div class="company-info">{{ `${quoterInfo.role}, ${quoterInfo.company}` }}
+            <div class="company-info">{{ `${quoterInfo.role}, ${quoterInfo.company} ` }}
             </div>
           </div>
           <font-awesome-icon icon="fa-brands fa-linkedin" size="2xl" />

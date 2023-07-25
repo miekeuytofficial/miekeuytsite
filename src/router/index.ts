@@ -42,7 +42,7 @@ const router = createRouter({
     },
     {
       path: '/testimonials',
-      name: 'Testimonals',
+      name: 'Testimonials',
       component: () => import('../views/TestimonialsView.vue'),
       meta: {
         layout: 'DefaultLayout',
