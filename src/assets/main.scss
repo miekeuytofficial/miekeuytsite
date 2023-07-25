@@ -34,9 +34,11 @@ h4 {
 
 div[class*='view'] {
   
-  padding: 1rem 2rem;
+  padding: 2rem 1rem;
+  min-height: 100%;
 
   .page-title {
+    margin-left: 1rem;
     h1 {
       font-size: large;
    color: var(--light-gray);
@@ -57,4 +59,9 @@ div[class*='view'] {
       }
     }
   }
+  max-width: 100%;
+}
+
+body,#app{
+  display: grid;
 }

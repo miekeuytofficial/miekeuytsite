@@ -26,7 +26,6 @@ import { workExperience } from '@/util/data';
 <style lang="scss">
 .experience-view {
     display: flex;
-    justify-content: center;
     flex-direction: column;
     color: black;
 
@@ -85,6 +84,21 @@ import { workExperience } from '@/util/data';
                 .subheader-text {
                     color: white
                 }
+            }
+        }
+    }
+}
+
+@media (max-width:400px) {
+    .experience-view {
+        align-items: center;
+
+        .timeline {
+            align-items: center;
+
+            .item-group {
+                flex-direction: column;
+                width: 100%;
             }
         }
     }

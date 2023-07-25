@@ -2,7 +2,7 @@
 import { useRouter } from 'vue-router'
 window.onload = function () {
     if (window.innerWidth < 700) {
-        alert('This site is not intended for mobile devices. Please view this site on a computer.');
+        alert('Recommended for desktop viewing. Display issues may occur on smaller screens.');
     }
 };
 type MenuItem = { path: string; name: string }
@@ -193,7 +193,7 @@ const isSelected = (itemName: string) => router.currentRoute.value.name === item
 
         .internet-links {
             display: flex;
-            gap: 1rem;
+            gap: 1.2rem;
 
             :hover {
                 color: var(--white);
@@ -230,6 +230,21 @@ const isSelected = (itemName: string) => router.currentRoute.value.name === item
 
 
     }
+
+}
+
+@media (max-width:400px) {
+    .default-header {
+        .header-shared {
+            flex-direction: column;
+            padding-bottom: 1rem;
+        }
+
+        .header-items {
+            flex-direction: column
+        }
+    }
+
 
 }
 </style>

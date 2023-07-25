@@ -20,9 +20,7 @@
 .home-view {
   color: var(--light-blue-gray);
   display: grid;
-  grid-template-columns: 1fr 1fr;
   height: 100%;
-  min-height: 80vh;
 
   * {
     z-index: 1;
@@ -35,7 +33,7 @@
     left: 0;
     width: 100%;
     min-height: 80vh;
-    background-image: url('src/assets/home-bg.png');
+    background-image: url('../assets/home-bg.png');
     background-size: cover;
     background-position: bottom;
   }
@@ -44,7 +42,6 @@
     display: flex;
     flex-direction: column;
     padding: 2rem;
-
 
     h1 {
       font-size: xx-large;

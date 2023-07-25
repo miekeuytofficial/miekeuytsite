@@ -14,7 +14,9 @@ const handleOverflowHide = () => {
   hideOverflow.value = !hideOverflow.value;
   emit('hiddenChange', hideOverflow.value);
 }
-const isLongTestimonial = () => props.quote.length > 360;
+
+const longTestimonialLimit = window.innerWidth > 400 ? 360 : 50;
+const isLongTestimonial = () => props.quote.length > longTestimonialLimit;
 </script>
 <template>
   <div class="testimonial" :class="{ 'hidden': hideOverflow && isLongTestimonial(), 'long': isLongTestimonial() }">
@@ -187,6 +189,32 @@ const isLongTestimonial = () => props.quote.length > 360;
         padding-bottom: 1rem;
         display: flex;
         justify-content: center;
+      }
+    }
+  }
+}
+
+@media (max-width:700px) {
+
+  .testimonials-view .grid .grid-sizer,
+  .testimonials-view .grid .testimonial {
+    min-width: 100%;
+
+  }
+
+}
+
+@media (max-width:400px) {
+  .testimonials-view .grid .testimonial {
+    display: flex;
+    flex-direction: column;
+
+    &.long {
+      .quote {
+        .continue-cover {
+
+          width: calc(100% - (var(--box-padding) * 2) + var(--box-gap));
+        }
       }
     }
   }

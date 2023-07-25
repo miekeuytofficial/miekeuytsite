@@ -10,7 +10,7 @@ onMounted(() => {
     msnry = new Masonry(masonry.value, {
         itemSelector: '.testimonial',
         columnWidth: '.grid-sizer',
-        gutter: 10,
+        gutter: '.grid-gap-sizer',
         percentPosition: true,
         horizontalOrder: true
     });
@@ -30,6 +30,7 @@ const handleHiddenChange = async () => {
         </div>
         <div ref="masonry" class="grid">
             <div class="grid-sizer" />
+            <div class="grid-gap-sizer" />
             <TestimonialHideable v-for="item in testimonials" :key="item.quoterInfo.name"
                 @hidden-change="handleHiddenChange" :quoter-info="item.quoterInfo" :img-src="item.imgUrl"
                 :quote="item.quote"></TestimonialHideable>
@@ -46,7 +47,13 @@ const handleHiddenChange = async () => {
 
         .grid-sizer,
         .testimonial {
+
             max-width: 49%;
+
+        }
+
+        .grid-gap-sizer {
+            width: 2%;
         }
 
         .testimonial {
@@ -54,6 +61,12 @@ const handleHiddenChange = async () => {
         }
 
         margin-bottom: 1rem;
+    }
+}
+
+@media (max-width:400px) {
+    .testimonials-view .grid .testimonial.long .quote .continue-cover {
+        height: 44%;
     }
 }
 </style>
