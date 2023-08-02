@@ -31,21 +31,23 @@ const isSelected = (itemName: string) => router.currentRoute.value.name === item
                 <div class="contact">
                     <div class="contact-details">
                         <div class="phone">
-                            <a href="tel:+61431863592"><font-awesome-icon icon="fa-solid fa-phone"
-                                    size="md" />+61431863592</a>
+                            <a href="tel:+61431863592" aria-label="Call phone number"><font-awesome-icon
+                                    icon="fa-solid fa-phone" size="md" />+61431863592</a>
                         </div>
                         <div class="email">
-                            <a href="mailto:miekeuyt@gmail.com"><font-awesome-icon icon="fa-solid fa-envelope"
-                                    size="lg" />miekeuyt@gmail.com</a>
+                            <a href="mailto:miekeuyt@gmail.com" aria-label="Send email"><font-awesome-icon
+                                    icon="fa-solid fa-envelope" size="lg" />miekeuyt@gmail.com</a>
                         </div>
                     </div>
                 </div>
                 <div class="contact">
                     <div class="internet-links">
-                        <a href="https://www.linkedin.com/in/moniqueus/"><font-awesome-icon icon="fa-brands fa-linkedin"
+                        <a href="https://www.linkedin.com/in/moniqueus/"
+                            aria-label="Go to LinkedIn profile"><font-awesome-icon icon="fa-brands fa-linkedin"
                                 size="2xl" /></a>
-                        <a href="https://github.com/miekeuytofficial/miekeuytsite"><font-awesome-icon
-                                icon="fa-brands fa-github" size="2xl" /></a>
+                        <a href="https://github.com/miekeuytofficial/miekeuytsite"
+                            aria-label="Go to source code on Github"><font-awesome-icon icon="fa-brands fa-github"
+                                size="2xl" /></a>
                     </div>
                 </div>
             </div>
@@ -63,10 +65,9 @@ const isSelected = (itemName: string) => router.currentRoute.value.name === item
 .default-header {
 
 
-    --header-bg-base-color: var(--dark-blue-gray);
-    --header-bg-color: var(--gray);
-    --header-item-bg-color: var(--blue-gray);
-    --header-text-color: black;
+    --header-bg-base-color: var(--darkest-gray);
+    --header-item-bg-color: var(--gray);
+    --header-text-color: white;
 
     display: flex;
     flex-wrap: nowrap;
@@ -97,11 +98,11 @@ const isSelected = (itemName: string) => router.currentRoute.value.name === item
                 display: flex;
 
                 .first-name {
-                    color: var(--pikachu-yellow);
+                    color: var(--yellow);
                 }
 
                 .last-name {
-                    color: var(--light-blue);
+                    color: var(--blue);
                 }
             }
 
@@ -112,36 +113,36 @@ const isSelected = (itemName: string) => router.currentRoute.value.name === item
                 gap: 0.5rem;
 
                 .first-name {
-                    color: var(--pikachu-yellow-75);
+                    color: var(--mid-yellow);
                 }
 
-                color: var(--light-gray);
+                color: var(--lightest-gray);
             }
         }
     }
 
     .header-items {
-        box-shadow: -2px 2px 3px -1px var(--dark-gray);
+        box-shadow: -2px 2px 3px -1px var(--darker-gray);
         display: flex;
         width: 100%;
     }
 
     .header-item {
         &--selected {
-            --header-item-bg-color: var(--gray);
-            --header-text-color: var(--pikachu-yellow);
+            --header-item-bg-color: var(--dark-gray);
+            --header-text-color: var(--yellow);
             font-weight: bold;
         }
 
         &:hover {
-            --header-item-bg-color: var(--light-gray-50);
+            --header-item-bg-color: var(--gray);
             --header-text-color: var(--white);
             cursor: pointer;
         }
 
-        --header-item-bg-color: var(--dark-gray);
+        --header-item-bg-color: var(--darker-gray);
 
-        --header-text-color: var(--warm-yellow);
+        --header-text-color: var(--yellow);
         background-color: var(--header-item-bg-color);
 
 
@@ -170,7 +171,7 @@ const isSelected = (itemName: string) => router.currentRoute.value.name === item
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        color: var(--light-gray-50);
+        color: var(--lighter-gray);
 
         .contact-details {
             display: flex;

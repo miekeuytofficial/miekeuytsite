@@ -52,16 +52,16 @@ import { workExperience } from '@/util/data';
             }
 
             .item {
-                border: 1px solid var(--pikachu-yellow);
+                border: 1px solid var(--yellow);
 
                 &:nth-child(odd) {
-                    background-color: var(--warm-yellow-75);
+                    background-color: var(--mid-yellow);
 
                 }
 
                 &:nth-child(even) {
-                    background-color: var(--light-blue-75);
-                    border: 1px solid var(--light-blue);
+                    background-color: var(--mid-blue);
+                    border: 1px solid var(--blue);
                 }
 
                 padding: 1rem 2rem;
@@ -81,9 +81,7 @@ import { workExperience } from '@/util/data';
                     margin: 0;
                 }
 
-                .subheader-text {
-                    color: white
-                }
+
             }
         }
     }

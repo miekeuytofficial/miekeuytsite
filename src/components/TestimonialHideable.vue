@@ -2,8 +2,8 @@
 import { ref } from 'vue';
 
 const props = defineProps<{
-  imgSrc: string
-  quoterInfo: { name: string; company: string; role: string; profileUrl: string }
+  imgSrc?: string
+  quoterInfo: { name: string; company: string; role: string; profileUrl?: string }
   quote: string
 }>()
 const emit = defineEmits(['hiddenChange']);
@@ -21,9 +21,10 @@ const isLongTestimonial = () => props.quote.length > longTestimonialLimit;
 <template>
   <div class="testimonial" :class="{ 'hidden': hideOverflow && isLongTestimonial(), 'long': isLongTestimonial() }">
     <div class="icon">
-      <img v-if="imgSrc" :src="imgSrc" /> <font-awesome-icon v-else icon="fa-solid fa-circle-user" :style="{
-        'fontSize': '60px', 'color': 'var(--light-blue-gray)', 'background': 'white', 'border-radius': '100%'
-      }" />
+      <img v-if="imgSrc" :src="imgSrc" aria-label="testimonial-quoter-icon" /> <font-awesome-icon v-else
+        icon="fa-solid fa-circle-user" :style="{
+          'fontSize': '60px', 'color': 'var(--light-gray)', 'background': 'white', 'border-radius': '100%'
+        }" />
     </div>
     <div class="quote-wrapper" @click="handleOverflowHide">
 
@@ -51,9 +52,9 @@ const isLongTestimonial = () => props.quote.length > longTestimonialLimit;
 </template>
 <style lang="scss">
 .testimonial {
-  --icon-color: var(--light-gray-50);
-  --quoter-name-color: var(--pikachu-yellow);
-  --quoter-company-color: var(--light-gray);
+  --icon-color: var(--light-gray);
+  --quoter-name-color: var(--yellow);
+  --quoter-company-color: var(--lightest-gray);
   --quoter-font-weight: 'normal';
 
   display: flex;
@@ -62,8 +63,8 @@ const isLongTestimonial = () => props.quote.length > longTestimonialLimit;
   break-inside: avoid;
   border-radius: 20px;
   padding: 1rem;
-  background-color: var(--dark-gray);
-  box-shadow: -2px 2px 3px -1px var(--dark-gray);
+  background-color: var(--darker-gray);
+  box-shadow: -2px 2px 3px -1px var(--darker-gray);
   color: white;
   gap: 1rem;
 
@@ -175,10 +176,10 @@ const isLongTestimonial = () => props.quote.length > longTestimonialLimit;
       width: calc(100% - (var(--quoter-icon-size) + (var(--box-padding) * 2) + var(--box-gap)));
       height: 75%;
       position: absolute;
-      color: var(--light-gray);
+      color: var(--lightest-gray);
       justify-content: flex-end;
       text-align: center;
-      background: linear-gradient(360deg, var(--dark-gray), var(--dark-gray-75), transparent, transparent, transparent);
+      background: linear-gradient(360deg, var(--darker-gray), var(--darker-gray-75), transparent, transparent, transparent);
 
       &:hover {
         color: var(--white);

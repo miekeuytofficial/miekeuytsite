@@ -4,6 +4,8 @@ import DefaultHeader from '../components/DefaultHeader.vue'
 <template>
     <div class="default-layout">
         <DefaultHeader />
-        <slot />
+        <main>
+            <slot />
+        </main>
     </div>
 </template>

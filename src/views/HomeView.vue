@@ -18,7 +18,7 @@
 
 <style lang="scss">
 .home-view {
-  color: var(--light-blue-gray);
+  color: var(--light-gray);
   display: grid;
   height: 100%;
 
@@ -45,18 +45,18 @@
 
     h1 {
       font-size: xx-large;
-      color: var(--pikachu-yellow);
+      color: var(--yellow);
 
-      text-shadow: var(--dark-blue-gray) 1px 1px 0;
+      text-shadow: var(--darkest-gray) 1px 1px 0;
 
     }
 
     h2 {
-      color: var(--light-gray);
+      color: var(--lightest-gray);
     }
 
     h3 {
-      color: var(--light-blue-gray);
+      color: var(--light-gray);
     }
 
 

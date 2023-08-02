@@ -56,32 +56,32 @@ onMounted(() => {
             border-style: solid;
             min-width: fit-content;
             margin-top: 1rem;
-            color: var(--light-blue);
+            color: var(--blue);
             border-radius: 20px;
-            background-color: var(--purple-75);
+            background-color: var(--mid-purple);
             text-transform: capitalize;
             color: black;
             font-weight: 800;
 
             &:nth-child(2n) {
                 font-weight: 800;
-                border-color: var(--light-blue);
+                border-color: var(--blue);
                 color: black;
-                background-color: var(--light-blue-75);
+                background-color: var(--mid-blue);
             }
 
             &:nth-child(3n) {
-                border-color: var(--pikachu-yellow);
+                border-color: var(--yellow);
                 color: black;
                 font-weight: 800;
-                background-color: var(--pikachu-yellow-75);
+                background-color: var(--mid-yellow);
 
             }
 
 
             &:nth-child(4n) {
                 border-color: var(--green);
-                background-color: var(--green-75);
+                background-color: var(--mid-green);
             }
 
             .skill-inner {
