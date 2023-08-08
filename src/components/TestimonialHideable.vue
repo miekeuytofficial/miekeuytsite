@@ -8,7 +8,6 @@ const props = defineProps<{
 }>()
 const emit = defineEmits(['hiddenChange']);
 
-console.log(props.quote.length);
 const hideOverflow = ref(true);
 const handleOverflowHide = () => {
   hideOverflow.value = !hideOverflow.value;
@@ -17,14 +16,16 @@ const handleOverflowHide = () => {
 
 const longTestimonialLimit = window.innerWidth > 400 ? 360 : 50;
 const isLongTestimonial = () => props.quote.length > longTestimonialLimit;
+const showImage = ref(!!props.imgSrc);
 </script>
+
 <template>
   <div class="testimonial" :class="{ 'hidden': hideOverflow && isLongTestimonial(), 'long': isLongTestimonial() }">
     <div class="icon">
-      <img v-if="imgSrc" :src="imgSrc" aria-label="testimonial-quoter-icon" /> <font-awesome-icon v-else
-        icon="fa-solid fa-circle-user" :style="{
-          'fontSize': '60px', 'color': 'var(--light-gray)', 'background': 'white', 'border-radius': '100%'
-        }" />
+      <img v-if="showImage" :src="imgSrc" aria-label="testimonial-quoter-icon" @error="() => { showImage = false; }" />
+      <font-awesome-icon v-else icon="fa-solid fa-circle-user" :style="{
+        'fontSize': '60px', 'color': 'var(--light-gray)', 'background': 'white', 'border-radius': '100%'
+      }" />
     </div>
     <div class="quote-wrapper" @click="handleOverflowHide">
 
