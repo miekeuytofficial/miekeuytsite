@@ -8,7 +8,10 @@ The website is built with Vue 3 and TypeScript, and is optimized for desktop vie
 
 ## Development
 
-This project was developed over a course of 4 days. It is not intended for local development but you're welcome to explore the code to understand its structure and functionalities.
+The base of this project was developed over a course of 4 days. This initial version can be seen at [4days.miekeuyt.com](https://4days.miekeuyt.com) and the initial source code can be seen [on the 4days branch](https://github.com/miekeuytofficial/miekeuytsite/tree/4days).
+
+The main branch contains the latest code for miekeuyt.com.
+It is not intended for local development but you're welcome to explore the code to understand its structure and functionalities.
 
 ## Deployment
 
