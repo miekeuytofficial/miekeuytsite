@@ -32,7 +32,7 @@ h4 {
   letter-spacing: 0.2rem;
 }
 
-div[class*='view'] {
+.default-layout >main > div[class*='view'] {
   
   padding: 2rem 1rem;
   min-height: 100%;
