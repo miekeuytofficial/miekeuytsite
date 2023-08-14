@@ -2,8 +2,8 @@
 import { ref } from 'vue';
 
 const props = defineProps<{
-  imgSrc?: string
-  quoterInfo: { name: string; company: string; role: string; profileUrl?: string }
+
+  quoterInfo: { name: string; company: string; role: string; linkedInUrl?: string, profileImgUrl?: string }
   quote: string
 }>()
 const emit = defineEmits(['hiddenChange']);
@@ -16,13 +16,14 @@ const handleOverflowHide = () => {
 
 const longTestimonialLimit = window.innerWidth > 400 ? 360 : 50;
 const isLongTestimonial = () => props.quote.length > longTestimonialLimit;
-const showImage = ref(!!props.imgSrc);
+const showImage = ref(!!props.quoterInfo.profileImgUrl);
 </script>
 
 <template>
   <div class="testimonial" :class="{ 'hidden': hideOverflow && isLongTestimonial(), 'long': isLongTestimonial() }">
     <div class="icon">
-      <img v-if="showImage" :src="imgSrc" aria-label="testimonial-quoter-icon" @error="() => { showImage = false; }" />
+      <img v-if="showImage" :src="quoterInfo.profileImgUrl" aria-label="testimonial-quoter-icon"
+        @error="() => { showImage = false; }" />
       <font-awesome-icon v-else icon="fa-solid fa-circle-user" :style="{
         'fontSize': '60px', 'color': 'var(--light-gray)', 'background': 'white', 'border-radius': '100%'
       }" />
@@ -35,7 +36,7 @@ const showImage = ref(!!props.imgSrc);
         </div>{{ quote }}
       </div>
       <div class="quoter-info">
-        <a :href="quoterInfo.profileUrl">
+        <a :href="quoterInfo.linkedInUrl">
           <div class="quoter-name-role">
             <div class="quoter-name">{{ `${quoterInfo.name} ` }}</div>
 

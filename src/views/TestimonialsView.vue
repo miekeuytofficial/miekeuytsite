@@ -2,11 +2,14 @@
 import TestimonialHideable from '@/components/TestimonialHideable.vue';
 import Masonry from 'masonry-layout';
 import { onMounted, ref, nextTick } from 'vue';
-import { testimonials } from '@/util/data';
-
+import { useTestimonialStore } from '../stores/testimonial';
+const testimonialStore = useTestimonialStore();
+const testimonials = ref();
 const masonry = ref(null);
 let msnry: Masonry;
-onMounted(() => {
+onMounted(async () => {
+    testimonials.value = await testimonialStore.getTestimonials();
+    await nextTick();
     msnry = new Masonry(masonry.value, {
         itemSelector: '.testimonial',
         columnWidth: '.grid-sizer',
@@ -32,8 +35,8 @@ const handleHiddenChange = async () => {
             <div class="grid-sizer" />
             <div class="grid-gap-sizer" />
             <TestimonialHideable v-for="item in testimonials" :key="item.quoterInfo.name"
-                @hidden-change="handleHiddenChange" :quoter-info="item.quoterInfo" :img-src="item.imgUrl"
-                :quote="item.quote"></TestimonialHideable>
+                @hidden-change="handleHiddenChange" :quoter-info="item.quoterInfo" :quote="item.quote">
+            </TestimonialHideable>
         </div>
     </div>
 </template>
