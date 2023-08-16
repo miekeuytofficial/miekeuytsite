@@ -86,7 +86,6 @@ const showImage = ref(!!props.quoterInfo.profileImgUrl);
   }
 
   .quote {
-    margin-right: 1rem;
     word-wrap: break-word;
     white-space: normal;
   }
@@ -172,16 +171,17 @@ const showImage = ref(!!props.quoterInfo.profileImgUrl);
     }
 
     .continue-cover {
-      padding-right: 2rem;
-      display: flex;
-      flex-direction: column;
-      width: calc(100% - (var(--quoter-icon-size) + (var(--box-padding) * 2) + var(--box-gap)));
-      height: 75%;
-      position: absolute;
-      color: var(--lightest-gray);
-      justify-content: flex-end;
-      text-align: center;
       background: linear-gradient(360deg, var(--darker-gray), var(--darker-gray-75), transparent, transparent, transparent);
+      position: absolute;
+      left: 50%;
+      bottom: 20%;
+      transform: translateX(-50%);
+      display: flex;
+      justify-content: center;
+      align-items: end;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
 
       &:hover {
         color: var(--white);
@@ -190,8 +190,6 @@ const showImage = ref(!!props.quoterInfo.profileImgUrl);
 
       .cover {
         padding-bottom: 1rem;
-        display: flex;
-        justify-content: center;
       }
     }
   }
