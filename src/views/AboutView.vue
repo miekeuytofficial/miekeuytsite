@@ -4,7 +4,6 @@ const textData = {
   'My journey': [`I've had the opportunity to work on complex projects in my role as a Software Engineer. My experience with Vue.js, TypeScript, SCSS, and NestJS has enabled me to contribute to both internal and client-facing projects, honing my problem-solving skills along the way.`, `Having spent nearly two years studying in Japan, including a year at Sophia University, I've developed a deep appreciation for the country's culture and work ethic. Eager to take on the unique challenges and rewards of working in new environments, I am currently exploring opportunities to leverage my technical skills and positive attitude in Sydney as well as opportunities in Japan that offer visa sponsorship.`],
 }
 
-const smallDevice = () => window.innerWidth > 400;
 </script>
 
 <template>
@@ -13,7 +12,7 @@ const smallDevice = () => window.innerWidth > 400;
       <h1>About me</h1>
     </div>
     <div class="page-body">
-      <div v-if="smallDevice()" class="profile-img" />
+      <div class="profile-img" />
 
       <div class="item-group">
         <div v-for="[topic, text] in Object.entries(textData)" :key="topic" class="item">
@@ -32,20 +31,21 @@ const smallDevice = () => window.innerWidth > 400;
   color: white;
 
   .page-body {
-    display: grid;
-    flex-direction: column;
-    grid-template-columns: 1fr 2fr;
-    grid-template-rows: 1fr;
-    // margin-inline: 4rem;
+    display: flex;
+
+    height: 100%;
+    gap: 3rem;
+    padding: 2rem;
+    align-items: center;
+    justify-content: space-around;
 
     .profile-img {
       background-image: url('../assets/profile_img.png');
-      margin: 3rem;
-      display: flex;
-
+      width: 30%;
+      max-width: 200px;
+      min-height: 400px;
       height: auto;
-      width: auto;
-      background-image: url(/src/assets/profile_img.png);
+      background-image: url('/src/assets/profile_img.png');
       background-size: contain;
       background-repeat: no-repeat;
     }
@@ -54,7 +54,7 @@ const smallDevice = () => window.innerWidth > 400;
       display: flex;
       align-items: center;
       align-items: center;
-      max-width: 60ch;
+      max-width: 70%;
       flex-direction: column;
       justify-content: center;
       grid-template-rows: 1fr 1fr;
@@ -64,16 +64,9 @@ const smallDevice = () => window.innerWidth > 400;
   }
 }
 
-@media (max-width:800px) {
-  .about-view .page-body .profile-img {
-    margin: 1rem
-  }
-}
-
-@media (max-width:400px) {
+@media (max-width:700px) {
   .about-view .page-body {
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
+    flex-direction: column-reverse;
   }
 }
 </style>

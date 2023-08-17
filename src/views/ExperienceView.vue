@@ -1,22 +1,55 @@
 <script lang="ts" setup>
+import ExperienceWindow from '@/components/ExperienceWindow.vue';
+import ExperienceWindowHideable from '@/components/ExperienceWindowHideable.vue';
+import SoftSkillComponent from '@/components/SoftSkillComponent.vue';
 import { workExperience } from '@/util/data';
+import Masonry from 'masonry-layout';
+import { ref, onMounted, nextTick } from 'vue';
 
+const masonry = ref(null);
+let msnry: Masonry;
+onMounted(async () => {
+    msnry = new Masonry(masonry.value, {
+        itemSelector: '.item',
+        columnWidth: '.item-sizer',
+        gutter: 10,
+        percentPosition: true,
+        horizontalOrder: true,
+        originTop: true,
+    });
+});
 
+// const isLong = (desc: (string | string[])[]): number => {
+//     let totalLength = 0;
 
+//     for (const item of desc) {
+//         if (Array.isArray(item)) {
+//             totalLength += isLong(item); // Recursively calculate sub-array length
+//         }
+//         totalLength++; // Count the main array element
+//     }
+//     return totalLength;
+// }
 
+const handleRelayout = async () => {
+    await nextTick()
+
+    await msnry.layout();
+}
 </script>
 <template>
     <div class="experience-view dark-bg">
+
+        <SoftSkillComponent />
         <div class="page-title">
             <h1>Recent experience</h1>
         </div>
-        <div class="timeline">
-            <div v-for="(exp, idx) in workExperience" :key="idx" class="item-group">
-                <div v-for="work in exp" :key="work.date" class="item">
-                    <div v-if="work.role.length > 3" class="header-text">{{ work.role }}</div>
-                    <div v-else v-for="(r, i) in work.role" :key="i" class="header-text ht-1">{{ r }}</div>
-                    <div class="subheader-text">{{ work.company }}</div>{{ work.date }}
-                </div>
+
+        <div ref="masonry" class="timeline">
+            <div class="item-sizer" />
+            <div v-for="work in workExperience" :key="work.date" class="item">
+                <ExperienceWindowHideable @trigger-layout="handleRelayout" :company="work.company"
+                    :role="(work.role as string)" :date="work.date" :description="work.desc" :techstack="work.techSkills" />
             </div>
         </div>
     </div>
@@ -32,9 +65,76 @@ import { workExperience } from '@/util/data';
 
     .timeline {
         height: max-content;
-        width: 90%;
-        display: flex;
-        flex-direction: column;
+        width: 100%;
+
+        .item {
+            margin-top: 1rem;
+
+            .experience-window .experience-header {
+                background-color: var(--yellow);
+            }
+
+            &:hover {
+                .experience-window .experience-header {
+                    background-color: var(--mid-yellow);
+                    cursor: pointer;
+                }
+            }
+
+            &:nth-child(3) {
+                .experience-window .experience-header {
+                    background-color: var(--purple);
+                }
+
+                &:hover {
+                    .experience-window .experience-header {
+                        background-color: var(--mid-purple);
+                    }
+                }
+            }
+
+            &:nth-child(4) {
+                .experience-window .experience-header {
+                    background-color: var(--blue);
+                }
+
+                &:hover {
+                    .experience-window .experience-header {
+                        background-color: var(--mid-blue);
+                    }
+                }
+            }
+
+            &:nth-child(6) {
+
+
+                .experience-window .experience-header {
+                    background-color: var(--purple);
+                }
+
+                &:hover {
+                    .experience-window .experience-header {
+                        background-color: var(--mid-purple);
+                    }
+                }
+            }
+
+            &:hover {
+                .experience-window .experience-header {
+                    * {
+                        color: var(--white);
+                    }
+                }
+            }
+
+        }
+
+        .item,
+        .item-sizer {
+
+            width: 49%;
+        }
+
 
         .item-group {
             display: flex;
@@ -98,6 +198,17 @@ import { workExperience } from '@/util/data';
                 flex-direction: column;
                 width: 100%;
             }
+        }
+    }
+}
+
+@media (max-width: 780px) {
+
+    .experience-view .timeline {
+        grid-template-columns: 1fr;
+
+        .item {
+            width: 100%;
         }
     }
 }

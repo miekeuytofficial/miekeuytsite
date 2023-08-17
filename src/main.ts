@@ -5,7 +5,7 @@ import App from './App.vue'
 import router from './router'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faEnvelope, faPhone, faChevronDown, faCircleUser, faUser, faSpinner} from '@fortawesome/free-solid-svg-icons'
+import { faEnvelope, faPhone, faChevronDown, faCircleUser, faUser, faSpinner, faHandshake, faCircleCheck, faGlobe, faChevronUp} from '@fortawesome/free-solid-svg-icons'
 import { faLinkedin } from '@fortawesome/free-brands-svg-icons'
 import { faGithub } from '@fortawesome/free-brands-svg-icons/faGithub'
 
@@ -15,10 +15,13 @@ library.add(faEnvelope);
 library.add(faGithub);
 library.add(faPhone);
 library.add(faChevronDown);
+library.add(faChevronUp);
 library.add(faCircleUser);
 library.add(faUser);
 library.add(faSpinner);
-
+library.add(faHandshake);
+library.add(faCircleCheck);
+library.add(faGlobe);
 const app = createApp(App);
 app.component('font-awesome-icon', FontAwesomeIcon);
 app.use(createPinia());

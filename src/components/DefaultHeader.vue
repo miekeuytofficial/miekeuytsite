@@ -92,7 +92,7 @@ const isSelected = (itemName: string) => router.currentRoute.value.name === item
             text-transform: uppercase;
             font-weight: 800;
             letter-spacing: 0.7rem;
-            padding-block: 1rem;
+            padding-block: 1.6rem;
 
             .miekeuyt {
                 display: flex;
@@ -157,7 +157,9 @@ const isSelected = (itemName: string) => router.currentRoute.value.name === item
         font-size: 14px;
         font-weight: normal;
         letter-spacing: 0.5rem;
-        padding-block: 1.6rem;
+        padding-block: 1rem;
+        align-items: center;
+        text-align: center;
     }
 
     .contact-group {

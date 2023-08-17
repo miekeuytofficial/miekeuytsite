@@ -21,19 +21,10 @@ const router = createRouter({
         inHeaderMenu: true
       }
     },
-    {
-      path: '/skills',
-      name: 'Skills',
-      component: () => import('../views/SkillsView.vue'),
-      meta: {
-        layout: 'DefaultLayout',
-        inHeaderMenu: true
-      }
-    },
    
     {
-      path: '/experience',
-      name: 'Experience',
+      path: '/skills-and-experience',
+      name: 'Skills & Experience',
       component: () => import('../views/ExperienceView.vue'),
       meta: {
         layout: 'DefaultLayout',
