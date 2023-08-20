@@ -1,14 +1,17 @@
 <script lang="ts" setup>
-import ExperienceWindow from '@/components/ExperienceWindow.vue';
 import ExperienceWindowHideable from '@/components/ExperienceWindowHideable.vue';
 import SoftSkillComponent from '@/components/SoftSkillComponent.vue';
-import { workExperience } from '@/util/data';
 import Masonry from 'masonry-layout';
 import { ref, onMounted, nextTick } from 'vue';
+import { useExperienceStore } from '../stores/experience';
 
-const masonry = ref(null);
+const masonry = ref(null); const experienceStore = useExperienceStore();
+const experiences = ref();
 let msnry: Masonry;
 onMounted(async () => {
+    await experienceStore.getExperiences();
+    experiences.value = experienceStore.experiences;
+    await nextTick();
     msnry = new Masonry(masonry.value, {
         itemSelector: '.item',
         columnWidth: '.item-sizer',
@@ -19,17 +22,6 @@ onMounted(async () => {
     });
 });
 
-// const isLong = (desc: (string | string[])[]): number => {
-//     let totalLength = 0;
-
-//     for (const item of desc) {
-//         if (Array.isArray(item)) {
-//             totalLength += isLong(item); // Recursively calculate sub-array length
-//         }
-//         totalLength++; // Count the main array element
-//     }
-//     return totalLength;
-// }
 
 const handleRelayout = async () => {
     await nextTick()
@@ -47,9 +39,10 @@ const handleRelayout = async () => {
 
         <div ref="masonry" class="timeline">
             <div class="item-sizer" />
-            <div v-for="work in workExperience" :key="work.date" class="item">
-                <ExperienceWindowHideable @trigger-layout="handleRelayout" :company="work.company"
-                    :role="(work.role as string)" :date="work.date" :description="work.desc" :techstack="work.techSkills" />
+            <div v-for="experience in experiences" :key="experience.date" class="item">
+                <ExperienceWindowHideable @trigger-layout="handleRelayout" :company="experience.company"
+                    :role="(experience.role as string)" :date="experience.date" :description="experience.desc"
+                    :skills="experience.skills" />
             </div>
         </div>
     </div>

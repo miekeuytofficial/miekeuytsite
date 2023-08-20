@@ -2,7 +2,7 @@
 import type { ImageItemsItem } from '@/util/types';
 import { computed, ref } from 'vue';
 
-const props = defineProps<{ role: string, company: string, date: string, description: (string | string[])[], techstack: ImageItemsItem[] }>();
+const props = defineProps<{ role: string | string[], company: string, date: string, description: (string | string[])[], skills: ImageItemsItem[] }>();
 const emit = defineEmits(['trigger-layout']);
 const isRoleMultiline = computed(() => typeof props.role != 'string');
 const descHasSublist = (d: string | string[]) => typeof d != 'string';
@@ -14,19 +14,19 @@ const handleShowBody = () => {
     emit('trigger-layout')
 }
 
-const determineIconsToShow = (techstack) => {
+const determineIconsToShow = (skillItems: ImageItemsItem[]) => {
     let count = 4;
-    const stack = techstack.slice(0, count);
-    stack.forEach(stackItem => {
-        if (stackItem.size === 2) {
+    const skills = skillItems.slice(0, count);
+    skills.forEach(skill => {
+        if (skill.size === 2) {
             count -= 1;
         }
-        if (stackItem.size === 3) {
+        if (skill.size === 3) {
             count -= 2;
         }
     });
 
-    return techstack.slice(0, count === 1 ? 2 : count)
+    return skillItems.slice(0, count === 1 ? 2 : count)
 
 }
 
@@ -43,11 +43,11 @@ const determineIconsToShow = (techstack) => {
                     <div class="header-date">{{ date }}</div>
                 </div>
 
-                <div class="techstack-grid">
-                    <div v-for="(tech, idx) in determineIconsToShow(techstack)" :key="tech.img" class="techstack-img"
-                        :class="{ 'img-size-2': tech.size === 2, 'img-size-3': tech.size === 3 }">
+                <div class="skills-grid">
+                    <div v-for="(skill, idx) in determineIconsToShow(skills)" :key="skill.img" class="skills-img"
+                        :class="{ 'img-size-2': skill.size === 2, 'img-size-3': skill.size === 3 }">
                         <div class="img-inner"
-                            :style="{ 'background-image': `url(src/assets/tech-stack-img/${tech.img}.png)`, }">
+                            :style="{ 'background-image': `url(src/assets/tech-stack-img/${skill.img}.png)`, }">
                         </div>
                     </div>
                 </div>
@@ -58,13 +58,13 @@ const determineIconsToShow = (techstack) => {
 
         </div>
         <div v-if="showBody" class="experience-body">
-            <div class="experience-body--inner" :class="{ 'experience-body--inner--no-techstack': techstack.length === 0 }">
-                <div v-if="techstack.length != 0" class="techstack-wrapper">
-                    <div class="techstack-grid">
-                        <div v-for="tech in techstack" :key="tech.img" class="techstack-img"
-                            :class="{ 'img-size-2': tech.size === 2, 'img-size-3': tech.size === 3 }">
+            <div class="experience-body--inner" :class="{ 'experience-body--inner--no-skills': skills.length === 0 }">
+                <div v-if="skills.length != 0" class="skills-wrapper">
+                    <div class="skills-grid">
+                        <div v-for="skill in skills" :key="skill.img" class="skills-img"
+                            :class="{ 'img-size-2': skill.size === 2, 'img-size-3': skill.size === 3 }">
                             <div class="img-inner"
-                                :style="{ 'background-image': `url(src/assets/tech-stack-img/${tech.img}.png)`, }">
+                                :style="{ 'background-image': `url(src/assets/tech-stack-img/${skill.img}.png)`, }">
                             </div>
                         </div>
                     </div>
@@ -115,7 +115,7 @@ const determineIconsToShow = (techstack) => {
 
 
 
-            .techstack-grid {
+            .skills-grid {
                 display: grid;
                 gap: 0.3rem;
                 grid-template-columns: repeat(4, minmax(2.5rem, 1fr));
@@ -223,7 +223,7 @@ const determineIconsToShow = (techstack) => {
                 }
             }
 
-            .techstack-wrapper {
+            .skills-wrapper {
 
                 border-bottom-right-radius: 13px;
                 width: 100%;
@@ -231,7 +231,7 @@ const determineIconsToShow = (techstack) => {
                 padding: 0.5rem;
                 min-width: fit-content;
 
-                .techstack-title {
+                .skills-title {
                     font-weight: bold;
                     text-transform: uppercase;
                     letter-spacing: 0.2rem;
@@ -240,7 +240,7 @@ const determineIconsToShow = (techstack) => {
                     padding: 0;
                 }
 
-                .techstack-grid {
+                .skills-grid {
                     display: grid;
                     --w: calc(100% - 4rem);
                     --h: calc(80% - 1rem);
@@ -252,7 +252,7 @@ const determineIconsToShow = (techstack) => {
                     align-content: center;
                     justify-content: center;
 
-                    .techstack-img {
+                    .skills-img {
 
                         grid-column: span 1;
                         border-radius: 5px;
@@ -286,7 +286,7 @@ const determineIconsToShow = (techstack) => {
                 }
             }
 
-            &--no-techstack {
+            &--no-skills {
                 grid-template-columns: 1fr;
             }
         }
@@ -312,7 +312,7 @@ const determineIconsToShow = (techstack) => {
         grid-template-columns: 1fr;
 
         .description-wrapper,
-        .techstack-wrapper {
+        .skills-wrapper {
             border-radius: 13px 13px 0 0;
         }
     }

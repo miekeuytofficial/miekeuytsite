@@ -1,5 +1,5 @@
 import axios, { type AxiosRequestConfig } from 'axios'
-import type { Testimonial } from './types'
+import type { Experience, Testimonial } from './types'
 
 let config: AxiosRequestConfig = {
   maxBodyLength: Infinity,
@@ -8,7 +8,6 @@ let config: AxiosRequestConfig = {
 
 const axiosInstance = axios.create(config)
 axiosInstance.interceptors.request.use((value) => {
-  console.log(value)
   return { ...value }
 })
 
@@ -22,6 +21,16 @@ const getTestimonials: () => Promise<Testimonial[]> = async () => {
     console.log(e)
   }
 }
+
+const getExperiences: () => Promise<Experience[]> = async () => {
+  try {
+    const {data:{data}}= await axiosInstance.get('/experiences')
+    return data;
+  } catch (e) {
+    console.log(e)
+  }
+}
 export default {
-  getTestimonials
+  getTestimonials,
+  getExperiences
 }
