@@ -5,28 +5,30 @@ import Masonry from 'masonry-layout';
 import { ref, onMounted, nextTick } from 'vue';
 import { useExperienceStore } from '../stores/experience';
 
-const masonry = ref(null); const experienceStore = useExperienceStore();
+const masonry = ref<Element>();
+const experienceStore = useExperienceStore();
 const experiences = ref();
-let msnry: Masonry;
+const msnry = ref();
 onMounted(async () => {
     await experienceStore.getExperiences();
     experiences.value = experienceStore.experiences;
     await nextTick();
-    msnry = new Masonry(masonry.value, {
-        itemSelector: '.item',
-        columnWidth: '.item-sizer',
-        gutter: 10,
-        percentPosition: true,
-        horizontalOrder: true,
-        originTop: true,
-    });
+    if (masonry.value) {
+        msnry.value = new Masonry(masonry.value, {
+            itemSelector: '.item',
+            columnWidth: '.item-sizer',
+            gutter: 10,
+            percentPosition: true,
+            horizontalOrder: true,
+            originTop: true,
+        });
+    }
 });
 
 
 const handleRelayout = async () => {
     await nextTick()
-
-    await msnry.layout();
+    await msnry.value?.layout();
 }
 </script>
 <template>

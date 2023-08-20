@@ -3,7 +3,7 @@ export const iconComponentSharedDefaults = {
   tertiaryColor: 'var(--light-gray)',
   fillColor: 'var(--white)'
 }
-const genNum = (vals) => {
+const genNum = (vals:string[]):string => {
   const n =
     Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
   if (!vals.some((l) => l == n)) {
@@ -13,7 +13,7 @@ const genNum = (vals) => {
   }
 }
 export const uniqueIds = (num: number) => {
-  let vals = []
+  let vals:string[] = []
   for (let i = 0; i < num; i++) {
     vals.push(genNum(vals))
   }

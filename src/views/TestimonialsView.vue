@@ -5,24 +5,26 @@ import { onMounted, ref, nextTick } from 'vue';
 import { useTestimonialStore } from '../stores/testimonial';
 const testimonialStore = useTestimonialStore();
 const testimonials = ref();
-const masonry = ref(null);
-let msnry: Masonry;
+const masonry = ref<string | Element | null>(null);
+const msnry = ref();
 
 onMounted(async () => {
     testimonials.value = await testimonialStore.getTestimonials();
     await nextTick();
-    msnry = new Masonry(masonry.value, {
-        itemSelector: '.testimonial',
-        columnWidth: '.grid-sizer',
-        gutter: '.grid-gap-sizer',
-        percentPosition: true,
-        horizontalOrder: true
-    });
+    if (masonry.value) {
+        msnry.value = new Masonry(masonry.value, {
+            itemSelector: '.testimonial',
+            columnWidth: '.grid-sizer',
+            gutter: '.grid-gap-sizer',
+            percentPosition: true,
+            horizontalOrder: true
+        });
+    }
 });
 
 const handleHiddenChange = async () => {
     await nextTick();
-    await msnry.layout();
+    await msnry.value?.layout();
 }
 
 

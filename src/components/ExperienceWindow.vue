@@ -1,4 +1,3 @@
-import { ImageItemsItem } from '../util/icon-component';
 <script setup lang="ts">
 import type { ImageItemsItem } from '@/util/types';
 import { computed } from 'vue';
@@ -40,7 +39,7 @@ const descHasSublist = (d: string | string[]) => { console.log('bap', d, typeof 
                         <div v-for="tech in techstack" :key="tech.img" class="techstack-img"
                             :class="{ 'img-size-2': tech.size === 2, 'img-size-3': tech.size === 3 }">
                             <div class="img-inner"
-                                :style="{ 'background-image': `url(src/assets/tech-stack-img/${tech.img}.png)`, }">
+                                :style="{ 'background-image': `url(src/assets/skills-img/${tech.img}.png)`, }">
                             </div>
                         </div>
                     </div>
