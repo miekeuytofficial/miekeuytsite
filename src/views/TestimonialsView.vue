@@ -7,6 +7,7 @@ const testimonialStore = useTestimonialStore();
 const testimonials = ref();
 const masonry = ref(null);
 let msnry: Masonry;
+
 onMounted(async () => {
     testimonials.value = await testimonialStore.getTestimonials();
     await nextTick();
@@ -46,7 +47,6 @@ const handleHiddenChange = async () => {
 .testimonials-view {
     .grid {
         width: 100%;
-        margin-top: 3rem;
 
         .grid-sizer,
         .testimonial {
@@ -64,12 +64,6 @@ const handleHiddenChange = async () => {
         }
 
         margin-bottom: 1rem;
-    }
-}
-
-@media (max-width:400px) {
-    .testimonials-view .grid .testimonial.long .quote .continue-cover {
-        height: 44%;
     }
 }
 </style>

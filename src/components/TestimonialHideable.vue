@@ -4,7 +4,7 @@ import { ref } from 'vue';
 const props = defineProps<{
 
   quoterInfo: { name: string; company: string; role: string; linkedInUrl?: string, profileImgUrl?: string }
-  quote: string
+  quote: string | string[]
 }>()
 const emit = defineEmits(['hiddenChange']);
 
@@ -15,7 +15,18 @@ const handleOverflowHide = () => {
 }
 
 const longTestimonialLimit = window.innerWidth > 400 ? 360 : 50;
-const isLongTestimonial = () => props.quote.length > longTestimonialLimit;
+const isLongTestimonial = () => {
+  if (typeof props.quote === 'string') {
+    return props.quote.length > longTestimonialLimit;
+  }
+  else {
+    let counter = 0;
+    props.quote.forEach(q => {
+      counter += q.length;
+    });
+    return counter > longTestimonialLimit;
+  }
+}
 const showImage = ref(!!props.quoterInfo.profileImgUrl);
 </script>
 
@@ -33,7 +44,9 @@ const showImage = ref(!!props.quoterInfo.profileImgUrl);
       <div class="quote">
         <div v-if="isLongTestimonial() && hideOverflow" class="continue-cover">
           <div class="cover"><font-awesome-icon size="xl" :icon="`fa-solid fa-chevron-down`" /></div>
-        </div>{{ quote }}
+        </div>
+        <div v-if="(typeof quote === 'string')">{{ quote }}</div>
+        <p v-else v-for="(q, qIdx) in  quote " :style="{ marginTop: (qIdx === 0 ? 0 : 1) }">{{ q }}<br /></p>
       </div>
       <div class="quoter-info">
         <a :href="quoterInfo.linkedInUrl">
@@ -163,6 +176,7 @@ const showImage = ref(!!props.quoterInfo.profileImgUrl);
 
     .quoter-info a {
       gap: var(--box-gap);
+      z-index: 3;
     }
 
     .quote-wrapper {
@@ -205,14 +219,18 @@ const showImage = ref(!!props.quoterInfo.profileImgUrl);
 
 }
 
-@media (max-width:400px) {
+@media (max-width:500px) {
   .testimonials-view .grid .testimonial {
     display: flex;
     flex-direction: column;
 
     &.long {
       .quote {
+
         .continue-cover {
+          .cover {
+            padding-bottom: 10%
+          }
 
           width: calc(100% - (var(--box-padding) * 2) + var(--box-gap));
         }

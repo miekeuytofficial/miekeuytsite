@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import DefaultHeader from '@/components/DefaultHeader.vue';
-import {  watch, computed } from 'vue';
+import { watch, computed } from 'vue';
 import { useLoadingStore } from '../stores/loading';
 const loadingStore = useLoadingStore();
 const loading = computed(() => loadingStore.loading);

@@ -6,7 +6,7 @@ import { computed } from 'vue';
 const props = defineProps<{ role: string, company: string, date: string, description: (string | string[])[], techstack: ImageItemsItem[] }>();
 
 const isRoleMultiline = computed(() => typeof props.role != 'string');
-const descHasSublist = (d: string | string[]) => typeof d != 'string';
+const descHasSublist = (d: string | string[]) => { console.log('bap', d, typeof d); return typeof d != 'string'; }
 
 
 
@@ -14,7 +14,7 @@ const descHasSublist = (d: string | string[]) => typeof d != 'string';
 </script>
 
 <template>
-    <div class="experience-window" >
+    <div class="experience-window">
         <div class="experience-header">
             <div class="header-title">{{ isRoleMultiline ? role[0] : role }}</div>
             <div v-if="isRoleMultiline" class="header-title-2">{{ role[1] }}</div>

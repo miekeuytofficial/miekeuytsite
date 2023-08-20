@@ -1,10 +1,6 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
-window.onload = function () {
-    if (window.innerWidth < 700) {
-        alert('Recommended for desktop viewing. Display issues may occur on smaller screens.');
-    }
-};
+
 type MenuItem = { path: string; name: string }
 const router = useRouter()
 
@@ -236,7 +232,7 @@ const isSelected = (itemName: string) => router.currentRoute.value.name === item
 
 }
 
-@media (max-width:400px) {
+@media (max-width:500px) {
     .default-header {
         .header-shared {
             flex-direction: column;
@@ -245,6 +241,12 @@ const isSelected = (itemName: string) => router.currentRoute.value.name === item
 
         .header-items {
             flex-direction: column
+        }
+
+        .contact-group {
+            flex-direction: row;
+            gap: 1rem;
+            justify-content: space-between;
         }
     }
 

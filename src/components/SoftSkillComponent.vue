@@ -28,11 +28,21 @@ const skillsWithIcons = [
 ]
 const softSkillMasonryRef = ref()
 let softSkillMsnry: Masonry
+
+
+const determineIconSize = () => {
+    if (window.innerWidth < 400) {
+        return "3rem"
+    }
+    else {
+        return "4rem"
+    }
+}
 </script>
 <template>
     <div ref="softSkillMasonryRef" class="soft-grid">
         <div class="soft-skill soft-skill-with-icon" v-for="wordWithIcon in skillsWithIcons" :key="wordWithIcon.key">
-            <component :is="wordWithIcon.icon" width="4rem" height="4rem" />
+            <component :is="wordWithIcon.icon" :width="determineIconSize()" :height="determineIconSize()" />
             <div class="soft-skill-inner">{{ wordWithIcon.key }}</div>
         </div>
     </div>
@@ -116,10 +126,21 @@ let softSkillMsnry: Masonry
     }
 }
 
-@media (max-width:700px) {
-    .soft-grid .soft-skill .soft-skill-inner {
-        width: fit-content;
+@media (max-width:500px) {
+    .soft-grid .soft-skill {
+        width: 45%;
+
+        .soft-skill-inner {
+            width: min-content;
+        }
     }
 
 }
+
+// @media (max-width:700px) {
+//     .soft-grid .soft-skill .soft-skill-inner {
+//         width: fit-content;
+//     }
+
+// }
 </style>

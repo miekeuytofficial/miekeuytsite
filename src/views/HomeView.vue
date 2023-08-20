@@ -20,7 +20,7 @@
 .home-view {
   color: var(--light-gray);
   display: grid;
-  height: 100%;
+  height: 100vh;
 
   * {
     z-index: 1;
@@ -31,8 +31,9 @@
     z-index: 1;
     position: absolute;
     left: 0;
+
     width: 100%;
-    min-height: 80vh;
+    height: 100%;
     background-image: url('../assets/home-bg.png');
     background-size: cover;
     background-position: bottom;
