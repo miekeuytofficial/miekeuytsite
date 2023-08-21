@@ -2,6 +2,7 @@
 import DefaultHeader from '@/components/DefaultHeader.vue';
 import { watch, computed } from 'vue';
 import { useLoadingStore } from '../stores/loading';
+import DefaultFooter from '@/components/DefaultFooter.vue';
 const loadingStore = useLoadingStore();
 const loading = computed(() => loadingStore.loading);
 
@@ -25,6 +26,7 @@ watch((loading), () => {
             <slot />
 
         </main>
+        <DefaultFooter />
     </div>
 </template>
 

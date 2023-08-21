@@ -26,6 +26,7 @@ const isSelected = (itemName: string) => router.currentRoute.value.name === item
             <div class="contact-group">
                 <div class="contact">
                     <div class="contact-details">
+
                         <div class="phone">
                             <a href="tel:+61431863592" aria-label="Call phone number"><font-awesome-icon
                                     icon="fa-solid fa-phone" size="md" />+61431863592</a>
@@ -44,6 +45,8 @@ const isSelected = (itemName: string) => router.currentRoute.value.name === item
                         <a href="https://github.com/miekeuytofficial/miekeuytsite"
                             aria-label="Go to source code on Github"><font-awesome-icon icon="fa-brands fa-github"
                                 size="2xl" /></a>
+
+
                     </div>
                 </div>
             </div>
@@ -176,7 +179,8 @@ const isSelected = (itemName: string) => router.currentRoute.value.name === item
             gap: 2rem;
 
             .phone,
-            .email {
+            .email,
+            .resume {
                 a {
                     display: flex;
                     gap: 0.5rem;
