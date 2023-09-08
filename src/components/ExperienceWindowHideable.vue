@@ -46,7 +46,8 @@ const determineIconsToShow = (skillItems: ImageItemsItem[]) => {
                 <div class="skills-grid">
                     <div v-for="(skill, idx) in determineIconsToShow(skills)" :key="skill.img" class="skills-img"
                         :class="{ 'img-size-2': skill.size === 2, 'img-size-3': skill.size === 3 }">
-                        <div class="img-inner" :style="{ 'background-image': `url(skills-img/${skill.img}.png)`, }">
+                        <div class="img-inner" :style="{ 'background-image': `url(skills-img/${skill.img}.png)`, }"
+                            :aria-label="skill.img">
                         </div>
                     </div>
                 </div>
@@ -62,7 +63,8 @@ const determineIconsToShow = (skillItems: ImageItemsItem[]) => {
                     <div class="skills-grid">
                         <div v-for="skill in skills" :key="skill.img" class="skills-img"
                             :class="{ 'img-size-2': skill.size === 2, 'img-size-3': skill.size === 3 }">
-                            <div class="img-inner" :style="{ 'background-image': `url(skills-img/${skill.img}.png)`, }">
+                            <div class="img-inner" :style="{ 'background-image': `url(skills-img/${skill.img}.png)`, }"
+                                :label="skill.img" :aria-label="skill.img">
                             </div>
                         </div>
                     </div>

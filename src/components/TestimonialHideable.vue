@@ -42,8 +42,11 @@ const showImage = ref(!!props.quoterInfo.profileImgUrl);
     <div class="quote-wrapper" @click="handleOverflowHide">
 
       <div class="quote">
-        <div v-if="isLongTestimonial() && hideOverflow" class="continue-cover">
-          <div class="cover"><font-awesome-icon size="xl" :icon="`fa-solid fa-chevron-down`" /></div>
+        <div v-if="isLongTestimonial() && hideOverflow" class="continue-cover"
+          :aria-label="`${quote[0]} Expand to read more.`">
+          <div class="cover" :aria-label="`${quote[0]} (Expand to read more)`"><font-awesome-icon size="xl"
+              :icon="`fa-solid fa-chevron-down`" aria-label="Expand testimonial" />
+          </div>
         </div>
         <div v-if="(typeof quote === 'string')">{{ quote }}</div>
         <p v-else v-for="(q, qIdx) in  quote " :style="{ marginTop: (qIdx === 0 ? 0 : 1) }">{{ q }}<br /></p>
@@ -56,7 +59,7 @@ const showImage = ref(!!props.quoterInfo.profileImgUrl);
             <div class="company-info">{{ `${quoterInfo.role}, ${quoterInfo.company} ` }}
             </div>
           </div>
-          <font-awesome-icon icon="fa-brands fa-linkedin" size="2xl" />
+          <font-awesome-icon icon="fa-brands fa-linkedin" size="2xl" aria-label="linkedIn" />
         </a>
       </div>
 
