@@ -5,12 +5,9 @@
         Monique Uytterhoeven-Spark 2023<font-awesome-icon icon="fa-regular fa-copyright" />
       </div>
       <div class="resume">
-        <a
-          href="src\assets\MoniqueUytterhoevenSpark_Resume.pdf"
-          download="MoniqueUytterhoevenSpark_Resume"
-          aria-label="Download resume"
-          ><font-awesome-icon icon="fa-solid fa-file-arrow-down" size="md" />Download resume</a
-        >
+        <a href="/MoniqueUytterhoevenSpark_Resume.pdf" download="MoniqueUytterhoevenSpark_Resume"
+          aria-label="Download resume"><font-awesome-icon icon="fa-solid fa-file-arrow-down" size="md" />Download
+          resume</a>
       </div>
     </div>
   </footer>
