@@ -10,6 +10,18 @@ export type Testimonial = {
   }
 }
 
-export type Experience = { role: string | string[]; company: string; date: string, techSkills:ImageItemsItem[], desc:(string|string[])[] }
-export type IconComponentItem = { key: string, icon: any };
-export type ImageItemsItem = {img:string, size:1|2|3, desc?:string, similar?:string[], url?:string};
+export type Experience = {
+  role: string | string[]
+  company: string
+  date: string
+  techSkills: ImageItemsItem[]
+  desc: (string | string[])[]
+}
+export type IconComponentItem = { key: string; icon: any }
+export type ImageItemsItem = {
+  img: string
+  size: 1 | 2 | 3
+  desc?: string
+  similar?: string[]
+  url?: string
+}

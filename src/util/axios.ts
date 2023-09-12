@@ -3,7 +3,7 @@ import type { Experience, Testimonial } from './types'
 
 let config: AxiosRequestConfig = {
   maxBodyLength: Infinity,
-  baseURL: `https://api.miekeuyt.com`,
+  baseURL: `https://api.miekeuyt.com`
 }
 
 const axiosInstance = axios.create(config)
@@ -24,8 +24,10 @@ const getTestimonials: () => Promise<Testimonial[]> = async () => {
 
 const getExperiences: () => Promise<Experience[]> = async () => {
   try {
-    const {data:{data}}= await axiosInstance.get('/experiences')
-    return data;
+    const {
+      data: { data }
+    } = await axiosInstance.get('/experiences')
+    return data
   } catch (e) {
     console.log(e)
   }

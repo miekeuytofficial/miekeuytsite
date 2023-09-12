@@ -12,7 +12,8 @@ const router = createRouter({
         layout: 'DefaultLayout',
         inHeaderMenu: true
       }
-    }, {
+    },
+    {
       path: '/about',
       name: 'about',
       component: () => import('../views/AboutView.vue'),
@@ -21,7 +22,7 @@ const router = createRouter({
         inHeaderMenu: true
       }
     },
-   
+
     {
       path: '/skills-and-experience',
       name: 'Skills & Experience',
@@ -39,8 +40,7 @@ const router = createRouter({
         layout: 'DefaultLayout',
         inHeaderMenu: true
       }
-    },
-   
+    }
   ]
 })
 
