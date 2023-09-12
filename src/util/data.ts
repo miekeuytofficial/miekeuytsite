@@ -9,7 +9,7 @@ import {
   MagnifyingGlassIcon,
   WorldLanguageIcon
 } from '@/components/icon-components'
-import type { Experience, IconComponentItem, ImageItemsItem } from './types'
+import type { IconComponentItem } from './types'
 
 export const softSkillItems: IconComponentItem[] = [
   { key: 'dependable', icon: HandshakeCheckIcon },
@@ -22,54 +22,3 @@ export const softSkillItems: IconComponentItem[] = [
   { key: 'Collaboration', icon: FistBumpIcon },
   { key: 'Cross-cultural Communication Skills', icon: WorldLanguageIcon }
 ]
-
-// export const skills = [
-//     'Software Development',
-//     'Vue.js',
-//     'Problem Solving',
-//     'TypeScript',
-//     'NestJS',
-//     'Attention to Detail',
-//     'SCSS',
-//     'Storybook',
-//     'Communication',
-//     'Collaboration',
-//     'Positive Attitude',
-//     'Quick learner',
-//     'Product Focus',
-//     'Adaptability',
-//     'Japanese',
-//     'Continuous Improvement Initiatives',
-//     'Independent Thinking',
-//     'Flexible Approach',
-//     'Process Improvement Suggestions',
-//     'Technical Software Development',
-//     'Autonomy in Handling Complex Projects',
-//     'Internal Tooling',
-//     'Client-facing Projects',
-//     'Programming',
-//     'Java',
-//     'Python',
-//     'Design Systems',
-//     'Cross-cultural Communication Skills',
-//     'Team Motivation',
-//     'Dependable',
-//     'Team Leadership',
-//     'Technical Documentation',
-//     'Store Management',
-//     'Mature',
-//     'Web Development',
-//     'Technical Support',
-//     'Troubleshooting',
-//     'Object-Oriented Programming (OOP)',
-//     'Information Technology',
-//     '3D Modeling',
-//     'Japanese to English',
-//     'Project Management',
-//     'Computer Hardware',
-//     'Scala',
-//     'Computer Oriented',
-//     '3D Animation',
-//     'Blender',
-//     'Windows 10'
-// ]

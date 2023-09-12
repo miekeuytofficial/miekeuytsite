@@ -10,8 +10,7 @@ import {
   PositivityIcon,
   WorldLanguageIcon
 } from '@/components/icon-components'
-import { ref, onMounted, onUpdated, nextTick } from 'vue'
-import Masonry from 'masonry-layout'
+import { ref } from 'vue'
 import HeartFireIcon from './icon-components/HeartFireIcon.vue'
 
 const skillsWithIcons = [
@@ -27,7 +26,6 @@ const skillsWithIcons = [
   { key: 'Learning Mindset', icon: LearningIcon }
 ]
 const softSkillMasonryRef = ref()
-let softSkillMsnry: Masonry
 
 const determineIconSize = () => {
   if (window.innerWidth < 400) {
@@ -139,11 +137,4 @@ const determineIconSize = () => {
     }
   }
 }
-
-// @media (max-width:700px) {
-//     .soft-grid .soft-skill .soft-skill-inner {
-//         width: fit-content;
-//     }
-
-// }
 </style>

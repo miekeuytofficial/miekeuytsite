@@ -13,7 +13,7 @@ const genNum = (vals: string[]): string => {
   }
 }
 export const uniqueIds = (num: number) => {
-  let vals: string[] = []
+  const vals: string[] = []
   for (let i = 0; i < num; i++) {
     vals.push(genNum(vals))
   }

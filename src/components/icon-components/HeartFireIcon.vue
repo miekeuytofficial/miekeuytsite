@@ -39,27 +39,27 @@ withDefaults(
   >
     <defs>
       <g />
-      <clipPath id="f68dd3ef9f">
+      <clipPath :id="id[indx(0)]">
         <path
           d="M 0.40625 0.40625 L 418 0.40625 L 418 418 L 0.40625 418 Z M 0.40625 0.40625 "
           clip-rule="nonzero"
         />
       </clipPath>
-      <clipPath id="094f4c0413">
+      <clipPath :id="id[indx()]">
         <path
           d="M 209.28125 0.40625 C 93.921875 0.40625 0.40625 93.921875 0.40625 209.28125 C 0.40625 324.640625 93.921875 418.15625 209.28125 418.15625 C 324.640625 418.15625 418.15625 324.640625 418.15625 209.28125 C 418.15625 93.921875 324.640625 0.40625 209.28125 0.40625 "
           clip-rule="nonzero"
         />
       </clipPath>
-      <clipPath id="a0dfccc0e0">
+      <clipPath :id="id[indx()]">
         <path
           d="M 0.40625 0.40625 L 418 0.40625 L 418 418 L 0.40625 418 Z M 0.40625 0.40625 "
           clip-rule="nonzero"
         />
       </clipPath>
     </defs>
-    <g clip-path="url(#f68dd3ef9f)">
-      <g clip-path="url(#094f4c0413)">
+    <g :clip-path="`url(#${id[indx(0)]})`">
+      <g :clip-path="`url(#${id[indx()]})`">
         <path
           stroke-linecap="butt"
           transform="matrix(0.750126, 0, 0, 0.750126, 0.407183, 0.407191)"

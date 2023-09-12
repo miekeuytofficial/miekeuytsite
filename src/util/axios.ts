@@ -1,7 +1,7 @@
 import axios, { type AxiosRequestConfig } from 'axios'
 import type { Experience, Testimonial } from './types'
 
-let config: AxiosRequestConfig = {
+const config: AxiosRequestConfig = {
   maxBodyLength: Infinity,
   baseURL: `https://api.miekeuyt.com`
 }

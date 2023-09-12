@@ -77,7 +77,7 @@ const showImage = ref(!!props.quoterInfo.profileImgUrl)
           </div>
         </div>
         <div v-if="typeof quote === 'string'">{{ quote }}</div>
-        <p v-else v-for="(q, qIdx) in quote" :style="{ marginTop: qIdx === 0 ? 0 : 1 }">
+        <p v-else v-for="(q, qIdx) in quote" :key="qIdx" :style="{ marginTop: qIdx === 0 ? 0 : 1 }">
           {{ q }}<br />
         </p>
       </div>

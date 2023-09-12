@@ -49,7 +49,7 @@ const determineIconsToShow = (skillItems: ImageItemsItem[]) => {
 
         <div class="skills-grid">
           <div
-            v-for="(skill, idx) in determineIconsToShow(skills)"
+            v-for="skill in determineIconsToShow(skills)"
             :key="skill.img"
             class="skills-img"
             :class="{ 'img-size-2': skill.size === 2, 'img-size-3': skill.size === 3 }"
