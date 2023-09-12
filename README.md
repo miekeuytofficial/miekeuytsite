@@ -4,7 +4,7 @@ This is the source code for my professional website. The site showcases my skill
 
 ## Tech Stack
 
-The website is built with Vue 3 and TypeScript, and is optimized for desktop viewing. It also uses [Masonryjs](https://masonry.desandro.com).
+The website is built with Vue 3 and TypeScript, utilizing axios and AWS services. It is optimized for desktop viewing. It also uses [Masonryjs](https://masonry.desandro.com).
 
 ## Development
 
@@ -15,4 +15,11 @@ It is not intended for local development but you're welcome to explore the code 
 
 ## Deployment
 
-The website is hosted on AWS using services like S3 for storage, Route53 for DNS management, and CloudFront for content delivery. The deployment process involves building the project for production (`npm run build`) and uploading the resulting `dist` directory to the AWS S3 hosting service.
+The website is hosted on AWS using services:
+- S3 for storage
+- Route53 for DNS management
+- CloudFront for content delivery
+- DynamoDB for data
+- Lambda + API Gateway for APIs
+
+The deployment process involves building the project for production (`npm run build`) and uploading the resulting `dist` directory to the AWS S3 hosting service.
