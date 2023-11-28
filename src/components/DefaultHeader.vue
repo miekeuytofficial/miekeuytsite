@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
+import { ref, computed } from 'vue'
 
 type MenuItem = { path: string; name: string }
 const router = useRouter()
@@ -9,9 +10,48 @@ const menuItems: MenuItem[] = headerMenuRoutes.map(({ path, name }) => {
   return { path, name: name as string }
 })
 const isSelected = (itemName: string) => router.currentRoute.value.name === itemName
+
+const amLooking = ref(true)
+
+const showNotification = ref(true)
+const closeNotification = () => {
+  showNotification.value = false
+}
 </script>
 <template>
   <header class="default-header">
+    <div
+      v-if="showNotification"
+      class="notification"
+      :class="amLooking ? 'is-looking' : 'not-looking'"
+    >
+      <div class="contact notification-inner">
+        <div class="color-block"></div>
+
+        <div class="notification-text">
+          <div class="notification-text-inner">
+            <h4>
+              {{
+                amLooking
+                  ? 'Currently Seeking New Opportunities'
+                  : 'Not Currently Seeking New Opportunities'
+              }}
+            </h4>
+            <p>
+              {{
+                amLooking
+                  ? "I'm currently seeking new opportunities. Feel free to give me a call or reach out via LinkedIn or email."
+                  : `I\'m not actively looking for new opportunities right now. Feel free to
+        reach out via LinkedIn or email.`
+              }}
+            </p>
+          </div>
+          <div class="close-button-wrapper" @click="closeNotification()">
+            <div class="close-button">x</div>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="header-shared">
       <div class="title">
         <div class="miekeuyt">
@@ -23,10 +63,11 @@ const isSelected = (itemName: string) => router.currentRoute.value.name === item
           <div class="last-name">Uytterhoeven-Spark</div>
         </div>
       </div>
+
       <div class="contact-group">
         <div class="contact">
           <div class="contact-details">
-            <div class="phone">
+            <div v-if="amLooking" class="phone">
               <a href="tel:+61431863592" aria-label="Call phone number"
                 ><font-awesome-icon icon="fa-solid fa-phone" size="md" />+61431863592</a
               >
@@ -52,6 +93,7 @@ const isSelected = (itemName: string) => router.currentRoute.value.name === item
         </div>
       </div>
     </div>
+
     <div class="header-items">
       <div
         v-for="item in menuItems"
@@ -252,6 +294,95 @@ const isSelected = (itemName: string) => router.currentRoute.value.name === item
       gap: 1rem;
       justify-content: space-between;
     }
+  }
+}
+
+.notification {
+  --looking-color: var(--green);
+  --not-looking-color: var(--mid-yellow);
+
+  // width: 100%;
+  // padding: 3rem;
+
+  display: flex;
+  height: max-content;
+  // justify-items: center;
+  // background-color: var(--mid-blue);
+  // font-size: 11px;
+
+  font-weight: normal;
+  // max-width: 4rem;
+  &.not-looking {
+    // color: var(--darkest-gray);
+    .color-block {
+      background-color: var(--not-looking-color);
+    }
+    .notification-inner .notification-text {
+      border: 1px solid var(--not-looking-color);
+    }
+  }
+  .color-block {
+    width: 5%;
+    max-width: 3rem;
+    min-width: 1rem;
+
+    background-color: var(--looking-color);
+    height: 100%;
+  }
+  .notification-inner {
+    gap: 0;
+
+    // padding-inline: 0.5rem;
+    .notification-text {
+      margin: 0;
+      padding: 0;
+      font-size: 14px;
+      // padding: 0.5rem;
+      border: 1px solid var(--looking-color);
+      padding-left: 0.5rem;
+      padding-block: 0.2rem;
+      // flex-wrap: wrap;
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      h4,
+      p {
+        margin: 0;
+      }
+      .notification-text-inner {
+        display: flex;
+        flex-direction: column;
+      }
+      .close-button-wrapper {
+        .close-button {
+          margin: 0.2rem;
+          margin-right: 0.5rem;
+          padding-inline: 0.5rem;
+
+          border: 1px solid var(--gray);
+          border-radius: 2px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          // align-items: center;
+          // background-color: var(--dark-gray);
+          &:hover {
+            // background-color: var(--gray);
+            color: var(--white);
+            border: 1px solid var(--light-gray);
+            cursor: pointer;
+          }
+        }
+      }
+    }
+    width: 100%;
+    // height: 100%;
+    display: flex;
+    flex-direction: row;
+    // flex-direction: column;
+    // justify-items: center;
+    // gap: 1rem;
   }
 }
 </style>
