@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
 import { ref, computed } from 'vue'
+import { useHeaderStore } from '../stores/header'
 
 type MenuItem = { path: string; name: string }
 const router = useRouter()
@@ -11,6 +12,8 @@ const menuItems: MenuItem[] = headerMenuRoutes.map(({ path, name }) => {
 })
 const isSelected = (itemName: string) => router.currentRoute.value.name === itemName
 
+const headerStore = useHeaderStore()
+const headerInfo = headerStore.getHeaderInfo()
 const amLooking = ref(true)
 
 const showNotification = ref(true)

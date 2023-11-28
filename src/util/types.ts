@@ -25,3 +25,9 @@ export type ImageItemsItem = {
   similar?: string[]
   url?: string
 }
+
+export type HeaderInfo = {
+  phone: string
+  email: string
+  looking: boolean
+}

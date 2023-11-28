@@ -5,11 +5,22 @@ import { useLoadingStore } from '../stores/loading'
 import DefaultFooter from '@/components/DefaultFooter.vue'
 const loadingStore = useLoadingStore()
 const loading = computed(() => loadingStore.loading)
-
+const headerLoading = computed(() => loadingStore.loadingHeader)
 watch(loading, () => {})
+watch(headerLoading, () => {})
 </script>
 <template>
   <div class="default-layout">
+    <Transition name="slide-fade">
+      <div class="loading-wrapper loading-wrapper--header" v-if="headerLoading">
+        <div class="loading-inner">
+          <div class="loading-icon">
+            <font-awesome-icon icon="fa-icon fa-spinner" size="xl" />
+          </div>
+          <div class="loading-text">Loading...</div>
+        </div>
+      </div>
+    </Transition>
     <DefaultHeader />
     <main>
       <Transition name="slide-fade">
@@ -73,11 +84,15 @@ watch(loading, () => {})
     }
   }
 
+  &--header {
+    position: fixed;
+  }
+
   background-color: var(--darker-gray-75);
   position: absolute;
   width: 100%;
   height: 100%;
-  z-index: 1;
+  z-index: 99;
   display: flex;
   // flex-direction: column;
   align-items: center;

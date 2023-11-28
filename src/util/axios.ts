@@ -1,5 +1,5 @@
 import axios, { type AxiosRequestConfig } from 'axios'
-import type { Experience, Testimonial } from './types'
+import type { Experience, HeaderInfo, Testimonial } from './types'
 
 const config: AxiosRequestConfig = {
   maxBodyLength: Infinity,
@@ -32,7 +32,19 @@ const getExperiences: () => Promise<Experience[]> = async () => {
     console.log(e)
   }
 }
+
+const getHeaderInfo: () => Promise<HeaderInfo> = async () => {
+  try {
+    const {
+      data: { data }
+    } = await axiosInstance.get('/header-info')
+    return data
+  } catch (e) {
+    console.log(e)
+  }
+}
 export default {
   getTestimonials,
-  getExperiences
+  getExperiences,
+  getHeaderInfo
 }
