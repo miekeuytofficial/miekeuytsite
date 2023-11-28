@@ -5,7 +5,7 @@ import { useLoadingStore } from '../stores/loading'
 import DefaultFooter from '@/components/DefaultFooter.vue'
 const loadingStore = useLoadingStore()
 const loading = computed(() => loadingStore.loading)
-const headerLoading = computed(() => loadingStore.loadingHeader)
+const headerLoading = computed(() => loadingStore.headerLoading)
 watch(loading, () => {})
 watch(headerLoading, () => {})
 </script>

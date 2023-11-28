@@ -38,7 +38,7 @@ const getHeaderInfo: () => Promise<HeaderInfo> = async () => {
     const {
       data: { data }
     } = await axiosInstance.get('/header-info')
-    return data
+    return data[0]
   } catch (e) {
     console.log(e)
   }

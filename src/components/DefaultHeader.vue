@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted, nextTick } from 'vue'
 import { useHeaderStore } from '../stores/header'
 
 type MenuItem = { path: string; name: string }
@@ -13,48 +13,57 @@ const menuItems: MenuItem[] = headerMenuRoutes.map(({ path, name }) => {
 const isSelected = (itemName: string) => router.currentRoute.value.name === itemName
 
 const headerStore = useHeaderStore()
-const headerInfo = headerStore.getHeaderInfo()
-const amLooking = ref(true)
+const headerInfo = ref({ phone: '', email: '' })
+const amLooking = ref()
+const showNotification = ref()
 
-const showNotification = ref(true)
+onMounted(async () => {
+  headerInfo.value = await headerStore.getHeaderInfo()
+  await nextTick()
+  amLooking.value = headerInfo.value.looking
+  showNotification.value = amLooking.value != undefined
+})
+
 const closeNotification = () => {
   showNotification.value = false
 }
 </script>
 <template>
   <header class="default-header">
-    <div
-      v-if="showNotification"
-      class="notification"
-      :class="amLooking ? 'is-looking' : 'not-looking'"
-    >
-      <div class="contact notification-inner">
-        <div class="color-block"></div>
+    <Transition name="slide-fade">
+      <div
+        v-if="showNotification"
+        class="notification"
+        :class="amLooking ? 'is-looking' : 'not-looking'"
+      >
+        <div class="contact notification-inner">
+          <div class="color-block"></div>
 
-        <div class="notification-text">
-          <div class="notification-text-inner">
-            <h4>
-              {{
-                amLooking
-                  ? 'Currently Seeking New Opportunities'
-                  : 'Not Currently Seeking New Opportunities'
-              }}
-            </h4>
-            <p>
-              {{
-                amLooking
-                  ? "I'm currently seeking new opportunities. Feel free to give me a call or reach out via LinkedIn or email."
-                  : `I\'m not actively looking for new opportunities right now. Feel free to
+          <div class="notification-text">
+            <div class="notification-text-inner">
+              <h4>
+                {{
+                  amLooking
+                    ? 'Currently Seeking New Opportunities'
+                    : 'Not Currently Seeking New Opportunities'
+                }}
+              </h4>
+              <p>
+                {{
+                  amLooking
+                    ? "I'm currently seeking new opportunities. Feel free to give me a call or reach out via LinkedIn or email."
+                    : `I\'m not actively looking for new opportunities right now. Feel free to
         reach out via LinkedIn or email.`
-              }}
-            </p>
-          </div>
-          <div class="close-button-wrapper" @click="closeNotification()">
-            <div class="close-button">x</div>
+                }}
+              </p>
+            </div>
+            <div class="close-button-wrapper" @click="closeNotification()">
+              <div class="close-button">x</div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </Transition>
     <div class="header-shared">
       <div class="title">
         <div class="miekeuyt">
@@ -71,13 +80,15 @@ const closeNotification = () => {
         <div class="contact">
           <div class="contact-details">
             <div v-if="amLooking" class="phone">
-              <a href="tel:+61431863592" aria-label="Call phone number"
-                ><font-awesome-icon icon="fa-solid fa-phone" size="md" />+61431863592</a
+              <a :href="`tel:${headerInfo.phone}`" aria-label="Call phone number"
+                ><font-awesome-icon icon="fa-solid fa-phone" size="md" />{{ headerInfo.phone }}</a
               >
             </div>
             <div class="email">
-              <a href="mailto:miekeuyt@gmail.com" aria-label="Send email"
-                ><font-awesome-icon icon="fa-solid fa-envelope" size="lg" />miekeuyt@gmail.com</a
+              <a :href="`mailto:${headerInfo.email}`" aria-label="Send email"
+                ><font-awesome-icon icon="fa-solid fa-envelope" size="lg" />{{
+                  headerInfo.email
+                }}</a
               >
             </div>
           </div>
@@ -334,17 +345,13 @@ const closeNotification = () => {
   }
   .notification-inner {
     gap: 0;
-
-    // padding-inline: 0.5rem;
     .notification-text {
       margin: 0;
       padding: 0;
       font-size: 14px;
-      // padding: 0.5rem;
       border: 1px solid var(--looking-color);
       padding-left: 0.5rem;
       padding-block: 0.2rem;
-      // flex-wrap: wrap;
       width: 100%;
       display: flex;
       flex-direction: row;
@@ -368,10 +375,7 @@ const closeNotification = () => {
           display: flex;
           flex-direction: column;
           justify-content: center;
-          // align-items: center;
-          // background-color: var(--dark-gray);
           &:hover {
-            // background-color: var(--gray);
             color: var(--white);
             border: 1px solid var(--light-gray);
             cursor: pointer;
@@ -380,12 +384,25 @@ const closeNotification = () => {
       }
     }
     width: 100%;
-    // height: 100%;
     display: flex;
     flex-direction: row;
-    // flex-direction: column;
-    // justify-items: center;
-    // gap: 1rem;
+  }
+
+  /*
+  Enter and leave animations can use different
+  durations and timing functions.
+*/
+  &.slide-fade-enter-active {
+    animation: slidedown 0.5s ease-out;
+  }
+
+  &.slide-fade-leave-active {
+    animation: slideup 0.5s ease-in;
+  }
+
+  &.slide-fade-enter-from,
+  &.slide-fade-leave-to {
+    opacity: 0;
   }
 }
 </style>
