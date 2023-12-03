@@ -2,6 +2,7 @@
 import { useRouter } from 'vue-router'
 import { ref, computed, onMounted, nextTick } from 'vue'
 import { useHeaderStore } from '../stores/header'
+import Notification from './Notification.vue'
 
 type MenuItem = { path: string; name: string }
 const router = useRouter()
@@ -14,56 +15,20 @@ const isSelected = (itemName: string) => router.currentRoute.value.name === item
 
 const headerStore = useHeaderStore()
 const headerInfo = ref({ phone: '', email: '' })
-const amLooking = ref()
-const showNotification = ref()
+const amLooking = computed(() => {
+  if (headerStore.header) {
+    return headerStore.header.looking
+  }
+})
 
 onMounted(async () => {
   headerInfo.value = await headerStore.getHeaderInfo()
   await nextTick()
-  amLooking.value = headerInfo.value.looking
-  showNotification.value = amLooking.value != undefined
 })
-
-const closeNotification = () => {
-  showNotification.value = false
-}
 </script>
 <template>
   <header class="default-header">
-    <Transition name="slide-fade">
-      <div
-        v-if="showNotification"
-        class="notification"
-        :class="amLooking ? 'is-looking' : 'not-looking'"
-      >
-        <div class="contact notification-inner">
-          <div class="color-block"></div>
-
-          <div class="notification-text">
-            <div class="notification-text-inner">
-              <h4>
-                {{
-                  amLooking
-                    ? 'Currently Seeking New Opportunities'
-                    : 'Not Currently Seeking New Opportunities'
-                }}
-              </h4>
-              <p>
-                {{
-                  amLooking
-                    ? "I'm currently seeking new opportunities. Feel free to give me a call or reach out via LinkedIn or email."
-                    : `I\'m not actively looking for new opportunities right now. Feel free to
-        reach out via LinkedIn or email.`
-                }}
-              </p>
-            </div>
-            <div class="close-button-wrapper" @click="closeNotification()">
-              <div class="close-button">x</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </Transition>
+    <notification v-if="headerStore.header" :looking="amLooking" />
     <div class="header-shared">
       <div class="title">
         <div class="miekeuyt">
@@ -308,101 +273,6 @@ const closeNotification = () => {
       gap: 1rem;
       justify-content: space-between;
     }
-  }
-}
-
-.notification {
-  --looking-color: var(--green);
-  --not-looking-color: var(--mid-yellow);
-
-  // width: 100%;
-  // padding: 3rem;
-
-  display: flex;
-  height: max-content;
-  // justify-items: center;
-  // background-color: var(--mid-blue);
-  // font-size: 11px;
-
-  font-weight: normal;
-  // max-width: 4rem;
-  &.not-looking {
-    // color: var(--darkest-gray);
-    .color-block {
-      background-color: var(--not-looking-color);
-    }
-    .notification-inner .notification-text {
-      border: 1px solid var(--not-looking-color);
-    }
-  }
-  .color-block {
-    width: 5%;
-    max-width: 3rem;
-    min-width: 1rem;
-
-    background-color: var(--looking-color);
-    height: 100%;
-  }
-  .notification-inner {
-    gap: 0;
-    .notification-text {
-      margin: 0;
-      padding: 0;
-      font-size: 14px;
-      border: 1px solid var(--looking-color);
-      padding-left: 0.5rem;
-      padding-block: 0.2rem;
-      width: 100%;
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      h4,
-      p {
-        margin: 0;
-      }
-      .notification-text-inner {
-        display: flex;
-        flex-direction: column;
-      }
-      .close-button-wrapper {
-        .close-button {
-          margin: 0.2rem;
-          margin-right: 0.5rem;
-          padding-inline: 0.5rem;
-
-          border: 1px solid var(--gray);
-          border-radius: 2px;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          &:hover {
-            color: var(--white);
-            border: 1px solid var(--light-gray);
-            cursor: pointer;
-          }
-        }
-      }
-    }
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-  }
-
-  /*
-  Enter and leave animations can use different
-  durations and timing functions.
-*/
-  &.slide-fade-enter-active {
-    animation: slidedown 0.5s ease-out;
-  }
-
-  &.slide-fade-leave-active {
-    animation: slideup 0.5s ease-in;
-  }
-
-  &.slide-fade-enter-from,
-  &.slide-fade-leave-to {
-    opacity: 0;
   }
 }
 </style>
