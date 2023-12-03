@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted, computed, watch } from 'vue'
 
-const props = defineProps<{ looking: boolean }>()
+const props = defineProps<{ looking: boolean | undefined }>()
 const amLooking = computed(() => props.looking)
 const showNotification = ref(amLooking.value != undefined)
 
