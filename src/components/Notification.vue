@@ -92,6 +92,8 @@ const closeNotification = () => {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
+      gap: 0.5rem;
+
       h4,
       p {
         margin: 0;
@@ -157,5 +159,12 @@ const closeNotification = () => {
 .slide-fade-enter-from,
 .slide-fade-leave-to {
   opacity: 0;
+}
+
+@media (max-width: 500px) {
+  h4 {
+    font-size: 12px;
+    letter-spacing: 0.2rem;
+  }
 }
 </style>
