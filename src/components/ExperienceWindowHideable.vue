@@ -109,7 +109,7 @@ const determineIconsToShow = (skillItems: ImageItemsItem[]) => {
 
 <style lang="scss">
 .experience-window {
-  background-color: var(--light-gray);
+  background-color: var(--dark-bg-window-light); //var(--light-gray);
   border-radius: 20px;
   min-width: fit-content;
 
@@ -193,7 +193,7 @@ const determineIconsToShow = (skillItems: ImageItemsItem[]) => {
 
     &--inner {
       padding: 0.5rem;
-      background-color: var(--lighter-gray);
+      background-color: var(--dark-bg-window-light); //var(--lighter-gray);
       display: grid;
       border-bottom-right-radius: 15px;
 
@@ -201,7 +201,7 @@ const determineIconsToShow = (skillItems: ImageItemsItem[]) => {
       min-width: fit-content;
 
       .description-wrapper {
-        background-color: var(--gray);
+        background-color: var(--dark-bg-window-light-inner-dark); //var(--gray);
         border-bottom-left-radius: 13px;
         padding: 0.5rem 1rem;
         width: 100%;
@@ -212,11 +212,11 @@ const determineIconsToShow = (skillItems: ImageItemsItem[]) => {
           font-weight: bold;
           text-transform: uppercase;
           letter-spacing: 0.2rem;
-          color: var(--lightest-gray);
+          color: var(--dark-bg-window-light-inner-dark-title); //var(--lightest-gray);
         }
 
         ul {
-          color: var(--white);
+          color: var(--dark-bg-window-light-inner-dark-text); //var(--white);
           padding-inline: 1.5rem;
           margin-top: 0.5rem;
 
@@ -242,21 +242,21 @@ const determineIconsToShow = (skillItems: ImageItemsItem[]) => {
         padding: 0.5rem;
         min-width: fit-content;
 
-        .skills-title {
-          font-weight: bold;
-          text-transform: uppercase;
-          letter-spacing: 0.2rem;
-          color: var(--darkest-gray);
-          margin: 0;
-          padding: 0;
-        }
+        // .skills-title {
+        //   font-weight: bold;
+        //   text-transform: uppercase;
+        //   letter-spacing: 0.2rem;
+        //   color: var(--darkest-gray);
+        //   margin: 0;
+        //   padding: 0;
+        // }
 
         .skills-grid {
           display: grid;
           --w: calc(100% - 4rem);
           --h: calc(80% - 1rem);
           grid-template-columns: repeat(auto-fit, minmax(2.5rem, 1fr));
-          background-color: var(--lightest-gray);
+          background-color: var(--dark-bg-window-light-inner-light); //var(--lightest-gray);
           padding: 0.4rem 0.2rem;
           gap: 0.5rem;
           min-width: fit-content;

@@ -5,9 +5,12 @@
         Monique Uytterhoeven-Spark 2023<font-awesome-icon icon="fa-regular fa-copyright" />
       </div>
       <div class="resume">
-        <a href="/MoniqueUytterhoevenSpark_Resume.pdf" download="MoniqueUytterhoevenSpark_Resume"
-          aria-label="Download resume"><font-awesome-icon icon="fa-solid fa-file-arrow-down" size="md" />Download
-          resume</a>
+        <a
+          href="/MoniqueUytterhoevenSpark_Resume.pdf"
+          download="MoniqueUytterhoevenSpark_Resume"
+          aria-label="Download resume"
+          ><font-awesome-icon icon="fa-solid fa-file-arrow-down" size="md" />Download resume</a
+        >
       </div>
     </div>
   </footer>
@@ -27,8 +30,8 @@
     align-items: center;
     padding-inline: 1rem;
     padding-block: 0.5rem;
-    color: var(--gray);
-    background-color: var(--darkest-gray);
+    color: var(--footer-font-color); //var(--gray);
+    background-color: var(--footer-bg);//var(--darkest-gray);
 
     .copyright {
       display: flex;
@@ -44,7 +47,7 @@
       }
 
       &:hover {
-        color: var(--light-gray);
+        color: var(--footer-font-color-hover); //var(--light-gray);
         cursor: pointer;
       }
     }

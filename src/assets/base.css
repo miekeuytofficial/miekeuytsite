@@ -22,6 +22,61 @@
 }
 
 :root {
+
+  /* Semantic Variables */
+  --footer-bg: var(--darkest-gray);
+  --footer-font-color: var(--gray);
+  --footer-font-color-hover: var(--light-gray);
+  --header-bg: var(--darkest-gray);
+  --header-text-color: white;
+
+  --header-title-text-primary: var(--yellow);
+  --header-title-text-secondary: var(--blue);
+  --header-subtitle-text-primary: var(--mid-yellow);
+  --header-subtitle-text-secondary: var(--lightest-gray);
+
+  --header-item-bg: var(--darker-gray);
+  --header-item-bg-hover: var(--gray);
+  --header-item-bg-selected: var(--dark-gray);
+
+  --header-item-text-color: var(--yellow);
+  --header-item-text-color-hover: var(--white);
+  --header-item-text-color-selected: var(--yellow);
+
+  --header-contact-item-text-color: var(--lighter-gray);
+  --header-contact-item-text-color-hover: var(--white);
+
+  /* Light page*/
+  --light-bg: var(--mid-gray);
+  --light-bg-title-text: var(--lightest-gray);
+
+  /* on light page, with dark window box */
+  --light-bg-window-dark: var(--darker-gray);
+  --light-bg-window-dark-title: var(--yellow);
+  --light-bg-window-dark-subtitle: var(--lightest-gray);
+  --light-bg-window-dark-icon: var(--light-gray);
+  --light-bg-window-dark-text: white;
+
+  /* Dark page */
+  --dark-bg: var(--darkest-gray);
+  --dark-bg-title-text: var(--lighter-gray);
+
+  /* on dark pages, light+dark options for window boxes, including internal box variants*/
+  --dark-bg-window-dark: var(--mid-gray);
+  /* on dark bg page, a dark window, with an inner light box */
+  --dark-bg-window-dark-inner-light: var(--lighter-gray);
+  --dark-bg-window-dark-inner-light-border: 1px solid var(--light-gray);
+  --dark-bg-window-dark-inner-light-text: var(--darkest-gray);
+
+  /* on dark bg page, a light window */
+  --dark-bg-window-light: var(--lighter-gray);
+  /* dark and light variants for inner box */
+  --dark-bg-window-light-inner-light: var(--lightest-gray);
+  --dark-bg-window-light-inner-dark: var(--gray);
+  --dark-bg-window-light-inner-dark-title: var(--lightest-gray);
+  --dark-bg-window-light-inner-dark-text: var(--white);
+
+
   --vt-c-white: #ffffff;
   --vt-c-white-soft: #f8f8f8;
   --vt-c-white-mute: #f2f2f2;

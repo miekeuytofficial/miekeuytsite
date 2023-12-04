@@ -89,17 +89,13 @@ onMounted(async () => {
 
 <style lang="scss">
 .default-header {
-  --header-bg-base-color: var(--darkest-gray);
-  --header-item-bg-color: var(--gray);
-  --header-text-color: white;
-
   display: flex;
   flex-wrap: nowrap;
   flex-direction: column;
   padding-inline: 1rem;
   padding: 0;
-  background-color: var(--header-bg-base-color);
-  color: var(--header-text-color);
+  background-color: var(--header-bg);
+  color: var(--header-item-text-color);
   width: 100%;
 
   .header-shared {
@@ -122,11 +118,11 @@ onMounted(async () => {
         display: flex;
 
         .first-name {
-          color: var(--yellow);
+          color: var(--header-title-text-primary); //var(--yellow);
         }
 
         .last-name {
-          color: var(--blue);
+          color: var(--header-title-text-secondary); //var(--blue);
         }
       }
 
@@ -137,10 +133,10 @@ onMounted(async () => {
         gap: 0.5rem;
 
         .first-name {
-          color: var(--mid-yellow);
+          color: var(--header-subtitle-text-primary); //var(--mid-yellow);
         }
 
-        color: var(--lightest-gray);
+        color: var(--header-subtitle-text-secondary); //var(--lightest-gray);
       }
     }
   }
@@ -153,28 +149,25 @@ onMounted(async () => {
 
   .header-item {
     &--selected {
-      --header-item-bg-color: var(--dark-gray);
-      --header-text-color: var(--yellow);
+      --header-item-bg: var(--header-item-bg-selected); //var(--dark-gray);
+      --header-item-text-color: var(--header-item-text-color-selected); //var(--yellow);
       font-weight: bold;
     }
 
     &:hover {
-      --header-item-bg-color: var(--gray);
-      --header-text-color: var(--white);
+      --header-item-bg: var(--header-item-bg-hover);
+      --header-item-text-color: var(--header-item-text-color-hover);
       cursor: pointer;
     }
 
-    --header-item-bg-color: var(--darker-gray);
-
-    --header-text-color: var(--yellow);
-    background-color: var(--header-item-bg-color);
+    background-color: var(--header-item-bg);
 
     width: 100%;
     display: flex;
     border-radius: 2px;
     justify-content: center;
 
-    color: var(--header-text-color);
+    color: var(--header-item-text-color);
     text-decoration: none;
     text-transform: uppercase;
     font-size: 14px;
@@ -196,7 +189,7 @@ onMounted(async () => {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: var(--lighter-gray);
+    color: var(--header-contact-item-text-color);
 
     .contact-details {
       display: flex;
@@ -212,7 +205,7 @@ onMounted(async () => {
         }
 
         &:hover {
-          color: var(--white);
+          color: var(--header-contact-item-text-color-hover); //var(--white);
           cursor: pointer;
         }
       }
@@ -223,7 +216,7 @@ onMounted(async () => {
       gap: 1.2rem;
 
       :hover {
-        color: var(--white);
+        color: var(--header-contact-item-text-color-hover);
         cursor: pointer;
       }
     }

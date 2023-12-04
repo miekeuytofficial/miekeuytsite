@@ -55,7 +55,7 @@ const showImage = ref(!!props.quoterInfo.profileImgUrl)
         icon="fa-solid fa-circle-user"
         :style="{
           fontSize: '60px',
-          color: 'var(--light-gray)',
+          color: 'var(--light-bg-window-dark-icon)',
           background: 'white',
           'border-radius': '100%'
         }"
@@ -96,9 +96,9 @@ const showImage = ref(!!props.quoterInfo.profileImgUrl)
 </template>
 <style lang="scss">
 .testimonial {
-  --icon-color: var(--light-gray);
-  --quoter-name-color: var(--yellow);
-  --quoter-company-color: var(--lightest-gray);
+  --icon-color: var(--light-bg-window-dark-icon); //var(--light-gray);
+  --quoter-name-color: var(--light-bg-window-dark-title); //var(--yellow);
+  --quoter-company-color: var(--light-bg-window-dark-subtitle); //var(--lightest-gray);
   --quoter-font-weight: 'normal';
 
   display: flex;
@@ -107,9 +107,9 @@ const showImage = ref(!!props.quoterInfo.profileImgUrl)
   break-inside: avoid;
   border-radius: 20px;
   padding: 1rem;
-  background-color: var(--darker-gray);
+  background-color: var(--light-bg-window-dark); //var(--darker-gray);
   box-shadow: -2px 2px 3px -1px var(--darker-gray);
-  color: white;
+  color: var(--light-bg-window-dark-text);
   gap: 1rem;
 
   .icon {
@@ -232,7 +232,7 @@ const showImage = ref(!!props.quoterInfo.profileImgUrl)
       cursor: pointer;
 
       &:hover {
-        color: var(--white);
+        color: var(--lightest-gray);
         cursor: pointer;
       }
 

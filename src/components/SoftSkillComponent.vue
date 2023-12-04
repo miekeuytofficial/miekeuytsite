@@ -55,23 +55,22 @@ const determineIconSize = () => {
 <style lang="scss">
 .soft-grid {
   --soft-skill-width: 15%;
-
   --soft-skill-font-size: var(--skills-view-font-size);
   --soft-skill-padding: 0.5rem;
-  --soft-skill-border: 1px solid var(--light-gray);
+  --soft-skill-border: var(--dark-bg-window-dark-inner-light-border); //1px solid var(--light-gray);
   --soft-skill-margin-top: var(--skills-view-skill-margin-top);
   --soft-skill-border-radius: var(--skills-view-border-radius);
   --soft-skill-color: black;
   --soft-skill-font-weight: var(--skills-view-font-size);
-  --soft-skill-background: var(--lighter-gray);
+  --soft-skill-background: var(--dark-bg-window-dark-inner-light); //var(--lighter-gray);
   --soft-skill-inner-font-weight: 500;
-  --soft-skill-inner-color: var(--darkest-gray);
+  --soft-skill-inner-color: var(--dark-bg-window-dark-inner-light-text); //var(--darkest-gray);
   --soft-skill-gutter-sizer-width: var(--skills-view-gutter-sizer-width);
 
   margin-inline: 1rem;
   display: flex;
   align-items: center;
-  background-color: var(--mid-gray);
+  background-color: var(--dark-bg-window-dark); //var(--mid-gray);
   padding: 1rem;
   gap: 1rem;
   flex-wrap: wrap;
