@@ -5,7 +5,6 @@ const props = defineProps<{ looking: boolean | undefined }>()
 const amLooking = computed(() => props.looking)
 const showNotification = ref(amLooking.value != undefined)
 
-console.log(props)
 const closeNotification = () => {
   showNotification.value = false
 }
