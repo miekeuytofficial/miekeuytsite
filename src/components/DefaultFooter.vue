@@ -2,7 +2,7 @@
   <footer class="default-footer">
     <div class="default-footer-inner">
       <div class="copyright">
-        Monique Uytterhoeven-Spark 2023<font-awesome-icon icon="fa-regular fa-copyright" />
+        Monique Uytterhoeven-Spark 2024<font-awesome-icon icon="fa-regular fa-copyright" />
       </div>
       <div class="resume">
         <a
