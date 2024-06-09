@@ -31,7 +31,7 @@
     padding-inline: 1rem;
     padding-block: 0.5rem;
     color: var(--footer-font-color); //var(--gray);
-    background-color: var(--footer-bg);//var(--darkest-gray);
+    background-color: var(--footer-bg); //var(--darkest-gray);
 
     .copyright {
       display: flex;
