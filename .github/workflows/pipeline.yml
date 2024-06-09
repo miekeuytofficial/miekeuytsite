@@ -40,4 +40,7 @@ jobs:
           aws-region: ap-southeast-2
 
       - name: Sync to S3
-        run: aws s3 sync dist s3://${{ secrets.S3_BUCKET }} --dryrun
+        run: aws s3 sync dist s3://${{ secrets.S3_BUCKET }}
+
+      - name: Invalidate cloudfront
+        run: aws create-invalidation --distribution-id ${{ secrets.DISTRIBUTION_ID }}
