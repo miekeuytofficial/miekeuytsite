@@ -1,9 +1,9 @@
 import axios, { type AxiosRequestConfig } from 'axios'
 import type { Experience, HeaderInfo, Testimonial } from './types'
-
+const mode = import.meta.env.MODE
 const config: AxiosRequestConfig = {
   maxBodyLength: Infinity,
-  baseURL: `https://api.miekeuyt.com`
+  baseURL: mode == 'main' ? `https://api.miekeuyt.com` : 'https://test-api.miekeuyt.com'
 }
 
 const axiosInstance = axios.create(config)
