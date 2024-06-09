@@ -10,10 +10,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     environment:
-        name: ${{ github.ref_name == 'main' ? 'prod' : github.ref_name }}
+        name: ${{ github.ref_name }}
     steps:
       - name: Echo environment
-        run: echo ${{ github.ref_name == 'main' ? 'prod' : github.ref_name }}
+        run: echo ${{ github.ref_name }}
       - name: Checkout
         uses: actions/checkout@v2
         

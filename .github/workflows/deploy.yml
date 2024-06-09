@@ -7,7 +7,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     environment:
-        name: ${{ github.ref_name == 'main' ? 'prod' : github.ref_name }}
+        name: ${{ github.ref_name }}
     steps:
       - name: Download build dir
         uses: actions/download-artifact@v4
