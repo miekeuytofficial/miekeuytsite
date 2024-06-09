@@ -37,6 +37,7 @@ library.add(faCircleCheck)
 library.add(faGlobe)
 library.add(faFileArrowDown)
 library.add(faCopyright)
+
 const app = createApp(App)
 app.component('font-awesome-icon', FontAwesomeIcon)
 app.use(createPinia())
