@@ -22,6 +22,7 @@
 }
 
 :root {
+
   /* Semantic Variables */
   --footer-bg: var(--darkest-gray);
   --footer-font-color: var(--gray);
@@ -74,6 +75,7 @@
   --dark-bg-window-light-inner-dark: var(--gray);
   --dark-bg-window-light-inner-dark-title: var(--lightest-gray);
   --dark-bg-window-light-inner-dark-text: var(--white);
+
 
   --vt-c-white: #ffffff;
   --vt-c-white-soft: #f8f8f8;

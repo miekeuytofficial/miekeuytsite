@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, onMounted, computed, watch } from 'vue'
 
 const props = defineProps<{ looking: boolean | undefined }>()
 const amLooking = computed(() => props.looking)
