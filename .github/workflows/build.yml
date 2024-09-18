@@ -5,6 +5,7 @@ on:
     branches:
       - test
       - main
+      - dev
   pull_request:
     types: closed
 
