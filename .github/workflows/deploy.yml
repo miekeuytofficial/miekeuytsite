@@ -4,37 +4,18 @@ on:
   workflow_dispatch:   
 
 jobs:
+  compile:
+    uses: ./.github/workflows/build.yml
   deploy:
     runs-on: ubuntu-latest
     environment:
         name: ${{ github.ref_name }}
     steps:
-      - name: Download build artifact via API
-        id: download-artifact
-        uses: actions/github-script@v6
+      - name: Download build dir
+        uses: actions/download-artifact@v4
         with:
-            script: |
-              const { data: artifacts } = await github.rest.actions.listWorkflowRunArtifacts({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                run_id: context.run_id
-              });
-              const artifact = artifacts.find(a => a.name === 'build-artifact-${{github.ref_name}}');
-              if (!artifact) {
-                throw new Error('Artifact not found');
-              }
-              return artifact.archive_download_url;
-
-      - name: Download artifact file
-        run: |
-          curl -L ${{ steps.download-artifact.outputs.result }} -o artifact.zip
-          unzip artifact.zip -d dist
-
-      # - name: Download build dir
-      #   uses: actions/download-artifact@v4
-      #   with:
-      #     name: build-artifact
-      #     path: dist
+          name: build-artifact
+          path: dist
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
