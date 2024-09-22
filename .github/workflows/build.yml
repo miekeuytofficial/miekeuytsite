@@ -3,11 +3,12 @@ name: Build and Upload
 on:
   push:
     branches:
-      - test
-      - main
       - dev
   pull_request:
-    types: closed
+    branches:
+      - test
+      - main
+    types: [closed]
 
 jobs:
   build:
@@ -27,13 +28,14 @@ jobs:
         run: npm run build -- -- --mode ${{ github.ref_name }}
         
       - name: Upload build dir
+        if: github.ref_name == 'test' || github.ref_name == 'main'
         uses: actions/upload-artifact@v4
         with:
           name: build-artifact-${{github.ref_name}}
           path: dist
   deploy:
     needs: [build]
-    if: github.event.pull_request.merged == true
+    if: github.event.pull_request.merged == true && (github.ref_name == 'test' || github.ref_name == 'main')
     runs-on: ubuntu-latest
     environment:
         name: ${{ github.ref_name }}
@@ -41,7 +43,7 @@ jobs:
     - name: Download build dir
       uses: actions/download-artifact@v4
       with:
-        name: build-artifact
+        name: build-artifact-${{github.ref_name}}
         path: dist
       
     - name: Configure AWS credentials
