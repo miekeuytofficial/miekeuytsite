@@ -4,6 +4,8 @@ on:
   workflow_dispatch:   
 
 jobs:
+  compile:
+    uses: ./.github/workflows/build.yml
   deploy:
     runs-on: ubuntu-latest
     environment:
